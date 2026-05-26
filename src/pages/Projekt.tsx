@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageHelmet from '@/components/PageHelmet'
 import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import { projects } from '@/data/projects'
@@ -6,13 +6,11 @@ import { projects } from '@/data/projects'
 export default function Projekt() {
   return (
     <>
-      <Helmet>
-        <title>Projekt – Referensbilder | No1 Ställningar</title>
-        <meta
-          name="description"
-          content="Se exempel på våra genomförda ställningsprojekt i Göteborg och omnejd — fasadrenovering, nybyggnation, takskydd och mer."
-        />
-      </Helmet>
+      <PageHelmet
+        title="Projekt – Referensbilder från genomförda ställningsuppdrag"
+        description="Se exempel på våra genomförda ställningsprojekt i Göteborg och omnejd — fasadrenovering, nybyggnation, takskydd och mer."
+        path="/projekt"
+      />
 
       {/* Page Hero */}
       <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">

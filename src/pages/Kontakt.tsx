@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageHelmet from '@/components/PageHelmet'
 import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import Icon from '@/components/Icon'
@@ -7,13 +7,11 @@ import { contactInfo } from '@/data/contact'
 export default function Kontakt() {
   return (
     <>
-      <Helmet>
-        <title>Kontakt – No1 Ställningar Göteborg</title>
-        <meta
-          name="description"
-          content="Kontakta No1 Ställningar i Göteborg. Ring, maila eller besök oss. Vi svarar snabbt på alla förfrågningar."
-        />
-      </Helmet>
+      <PageHelmet
+        title="Kontakt – No1 Ställningar Göteborg"
+        description="Kontakta No1 Ställningar i Göteborg. Ring, maila eller besök oss. Vi svarar snabbt på alla förfrågningar."
+        path="/kontakt"
+      />
 
       {/* Page Hero */}
       <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">

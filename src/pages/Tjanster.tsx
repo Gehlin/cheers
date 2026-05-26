@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import PageHelmet from '@/components/PageHelmet'
 import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import Icon from '@/components/Icon'
@@ -72,13 +72,11 @@ const steps = [
 export default function Tjanster() {
   return (
     <>
-      <Helmet>
-        <title>Tjänster – Ställningar & uthyrning | No1 Ställningar</title>
-        <meta
-          name="description"
-          content="Vi erbjuder fasadställningar, rullställningar, väderskydd, takskydd och uthyrning av ställningar i Göteborg. Se alla våra tjänster."
-        />
-      </Helmet>
+      <PageHelmet
+        title="Tjänster – Ställningar & uthyrning i Göteborg"
+        description="Vi erbjuder fasadställningar, rullställningar, väderskydd, takskydd och uthyrning av ställningar i Göteborg. Se alla våra tjänster."
+        path="/tjanster"
+      />
 
       {/* Page Hero */}
       <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">

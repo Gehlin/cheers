@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageHelmet from '@/components/PageHelmet'
 import QuoteForm from '@/components/QuoteForm'
 import Icon from '@/components/Icon'
 import { contactInfo } from '@/data/contact'
@@ -6,13 +6,11 @@ import { contactInfo } from '@/data/contact'
 export default function BegarOffert() {
   return (
     <>
-      <Helmet>
-        <title>Begär offert – No1 Ställningar</title>
-        <meta
-          name="description"
-          content="Begär en kostnadsfri offert från No1 Ställningar. Fyll i formuläret så svarar vi inom 24 timmar."
-        />
-      </Helmet>
+      <PageHelmet
+        title="Begär offert – Kostnadsfri offert på ställningar"
+        description="Begär en kostnadsfri offert från No1 Ställningar. Fyll i formuläret så svarar vi inom 24 timmar."
+        path="/begar-offert"
+      />
 
       {/* Page Hero */}
       <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">

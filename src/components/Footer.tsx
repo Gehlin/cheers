@@ -47,21 +47,26 @@ export default function Footer() {
 
           {/* Column 2 — Quick links */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-widest text-white/60 mb-4">
+            <h3
+              id="footer-nav-label"
+              className="font-semibold text-sm uppercase tracking-widest text-white/60 mb-4"
+            >
               Snabblänkar
             </h3>
-            <ul className="space-y-2 text-sm">
-              {quickLinks.map(({ to, label }) => (
-                <li key={to}>
-                  <NavLink
-                    to={to}
-                    className="text-white/80 hover:text-brand-amber transition-colors"
-                  >
-                    {label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
+            <nav aria-labelledby="footer-nav-label">
+              <ul className="space-y-2 text-sm">
+                {quickLinks.map(({ to, label }) => (
+                  <li key={to}>
+                    <NavLink
+                      to={to}
+                      className="text-white/80 hover:text-brand-amber transition-colors"
+                    >
+                      {label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Column 3 — Service area */}

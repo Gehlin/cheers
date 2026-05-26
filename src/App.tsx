@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import LocalBusinessSchema from './components/LocalBusinessSchema'
 import Home from './pages/Home'
 import Tjanster from './pages/Tjanster'
 import Projekt from './pages/Projekt'
@@ -13,6 +14,7 @@ import NotFound from './pages/NotFound'
 function App() {
   return (
     <BrowserRouter>
+      <LocalBusinessSchema />
       <Header />
       <main id="main-content">
         <Routes>

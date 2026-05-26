@@ -13,3 +13,11 @@
   .section-padding { @apply py-16 px-4 sm:px-6 lg:px-8; }
   .container-max  { @apply max-w-7xl mx-auto; }
 }
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

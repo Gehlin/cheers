@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageHelmet from '@/components/PageHelmet'
 import SectionHeading from '@/components/SectionHeading'
 import Accordion from '@/components/Accordion'
 import Icon from '@/components/Icon'
@@ -15,13 +15,11 @@ const safetyPoints = [
 export default function OmOss() {
   return (
     <>
-      <Helmet>
-        <title>Om oss – No1 Ställningar Göteborg</title>
-        <meta
-          name="description"
-          content="No1 Ställningar är ett erfarent ställningsföretag baserat i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi."
-        />
-      </Helmet>
+      <PageHelmet
+        title="Om oss – Erfaret ställningsföretag i Göteborg"
+        description="No1 Ställningar är ett erfarent ställningsföretag baserat i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi."
+        path="/om-oss"
+      />
 
       {/* Page Hero */}
       <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
@@ -51,6 +49,7 @@ export default function OmOss() {
               <img
                 src="https://placehold.co/800x600/1B2A4A/ffffff?text=No1+Ställningar"
                 alt="No1 Ställningar – Ställningar under pågående byggprojekt"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

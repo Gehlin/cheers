@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import PageHelmet from '@/components/PageHelmet'
 import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import ServiceCard from '@/components/ServiceCard'
@@ -30,20 +30,11 @@ const whyPoints = [
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <title>No1 Ställningar – Professionella ställningar i Göteborg</title>
-        <meta
-          name="description"
-          content="No1 Ställningar erbjuder professionell uthyrning och montering av byggnadsställningar i Göteborg och omnejd. Begär offert idag."
-        />
-        <meta property="og:title" content="No1 Ställningar – Professionella ställningar i Göteborg" />
-        <meta
-          property="og:description"
-          content="No1 Ställningar erbjuder professionell uthyrning och montering av byggnadsställningar i Göteborg och omnejd. Begär offert idag."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="sv_SE" />
-      </Helmet>
+      <PageHelmet
+        title="No1 Ställningar – Professionella ställningar i Göteborg"
+        description="Säkra och flexibla ställningslösningar för bygg, renovering och underhåll i Göteborg. Begär offert idag."
+        path="/"
+      />
 
       {/* Hero */}
       <section
