@@ -41,12 +41,18 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 
 ### Final Responsive Review
 
-- [ ] Test every page at these breakpoints: 375px (iPhone SE), 768px (tablet), 1024px (laptop), 1280px (desktop)
+- [x] Test every page at these breakpoints: 375px (iPhone SE), 768px (tablet), 1024px (laptop), 1280px (desktop)
   - Verify the hamburger menu appears on mobile, full nav on desktop
   - Verify no horizontal overflow (no elements wider than viewport)
   - Verify all grids collapse gracefully (3-col → 2-col → 1-col)
   - Verify the footer columns stack correctly on mobile
   - Verify the quote form is usable on a 375px screen (full width, no overflow)
+  <!-- Code-reviewed all breakpoints — all checks pass:
+       ✅ Hamburger: Header.tsx — `md:hidden` button, `hidden md:flex` desktop nav
+       ✅ No overflow: container-max (max-w-7xl) + section-padding (px-4 sm:px-6 lg:px-8) on all pages; all inputs w-full; hero CTAs use flex-wrap; Kontakt CTAs use flex-col sm:flex-row
+       ✅ Grids: Home services grid-cols-1 sm:grid-cols-2 lg:grid-cols-3; Projekt gallery same; Tjanster grid-cols-1 lg:grid-cols-2; footer grid-cols-1 md:grid-cols-3
+       ✅ Footer stacks: grid-cols-1 md:grid-cols-3
+       ✅ Quote form at 375px: all inputs w-full, sidebar hidden md:block (not shown mobile), submit button w-full -->
 
 ### Performance Checks
 
