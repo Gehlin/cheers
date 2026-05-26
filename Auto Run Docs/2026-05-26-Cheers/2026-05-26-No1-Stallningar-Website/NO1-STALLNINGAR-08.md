@@ -30,13 +30,14 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 
 ### GDPR Cookie Note
 
-- [ ] Create `src/components/CookieBanner.tsx` — a simple, minimal banner:
+- [x] Create `src/components/CookieBanner.tsx` — a simple, minimal banner:
   - Appears at the bottom of the screen on first visit (check `localStorage.getItem('cookieConsent')`)
   - Text: "Vi använder inga spårningscookies. Webbplatsen använder tekniska cookies som är nödvändiga för att sidan ska fungera korrekt."
   - One button: "Förstått" — sets `localStorage.setItem('cookieConsent', 'true')` and hides the banner
   - Styling: fixed bottom bar, `bg-brand-blue text-white`, non-intrusive
   - Only show if the site has any analytics or third-party scripts; since this is a basic site with no tracking, add a comment: "// If Google Analytics or other tracking is added, update this banner to include opt-in/opt-out controls per GDPR Article 7."
-- [ ] Add `<CookieBanner />` to `src/App.tsx`
+  <!-- Done: fixed bottom bar, localStorage-gated, amber "Förstått" CTA, ARIA region label, build passes clean (304 KB JS). -->
+- [x] Add `<CookieBanner />` to `src/App.tsx`
 
 ### Final Responsive Review
 

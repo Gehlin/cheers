@@ -3,6 +3,7 @@ import './index.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LocalBusinessSchema from './components/LocalBusinessSchema'
+import CookieBanner from './components/CookieBanner'
 import Home from './pages/Home'
 import Tjanster from './pages/Tjanster'
 import Projekt from './pages/Projekt'
@@ -28,6 +29,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <CookieBanner />
     </BrowserRouter>
   )
 }
