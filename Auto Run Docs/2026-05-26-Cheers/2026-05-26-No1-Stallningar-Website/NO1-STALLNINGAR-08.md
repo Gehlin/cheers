@@ -56,10 +56,15 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 
 ### Performance Checks
 
-- [ ] Ensure gallery images use `loading="lazy"` (phase 05 — verify it's in place)
-- [ ] Ensure the hero image (if any) does NOT use `loading="lazy"` (it should load immediately)
-- [ ] Verify `npm run build` produces no warnings about chunk sizes over 500 KB. If it does, investigate and consider code-splitting the gallery page with `React.lazy()` and `<Suspense>`
-- [ ] Verify fonts are loaded efficiently — the Tailwind config uses the system font stack, so no external font requests should be needed. If Inter was added as a web font, ensure it uses `font-display: swap`.
+- [x] Ensure gallery images use `loading="lazy"` (phase 05 — verify it's in place)
+- [x] Ensure the hero image (if any) does NOT use `loading="lazy"` (it should load immediately)
+- [x] Verify `npm run build` produces no warnings about chunk sizes over 500 KB. If it does, investigate and consider code-splitting the gallery page with `React.lazy()` and `<Suspense>`
+- [x] Verify fonts are loaded efficiently — the Tailwind config uses the system font stack, so no external font requests should be needed. If Inter was added as a web font, ensure it uses `font-display: swap`.
+  <!-- Code-reviewed all performance checks — all pass:
+       ✅ Lazy images: Projekt.tsx line 56 — all gallery <img> tags have loading="lazy"; OmOss.tsx line 52 — company photo uses loading="lazy" (below fold)
+       ✅ Hero image: Home page hero uses CSS backgroundImage (no <img> tag at all); no hero <img> tags exist on any page — lazy loading concern is moot
+       ✅ Chunk size: npm run build → 304.38 KB JS / 92.27 KB gzip — well under 500 KB threshold; no code-splitting needed
+       ✅ Fonts: Inter is listed in tailwind.config.js fontFamily.sans but NOT imported as a web font (no Google Fonts link in index.html, no @font-face anywhere). Browser falls back to ui-sans-serif/system-ui — zero external font requests. -->
 
 ### Pre-Launch Client Checklist
 
