@@ -1,68 +1,87 @@
-# Phase 05: Projects, About & Contact Pages
+# No1 Ställningar — Phase 05: Projects, About & Contact Pages
 
-This phase builds the remaining three informational pages. The Projekt page displays a responsive lazy-loaded gallery using Unsplash placeholder photos (clearly marked for replacement). The Om oss page tells the company story with certifications, safety messaging, service area, and the full FAQ accordion. The Kontakt page has click-to-call/email links, opening hours, and a Google Maps embed with a graceful placeholder when the URL is not yet configured.
+## Goal
+Build the Projekt (gallery), Om oss (about), and Kontakt (contact) pages.
 
 ## Tasks
 
-- [ ] Create `src/pages/Projects.tsx` — the Projekt (gallery) page:
-  - `<PageHelmet title="Projekt – Referensbilder" description="Se exempel på våra genomförda ställningsprojekt i Göteborg och omnejd — fasadrenovering, nybyggnation, takskydd och mer." path="/projekt" />`
-  - **Page Hero** (`bg-brand-blue`, `min-h-[30vh]`):
-    - `<h1>` "Våra projekt"
-    - Subtitle: "Ett urval av genomförda projekt i Göteborg och omnejd"
-  - **Client Notice Banner** — a clearly styled info strip at the top of the gallery section (amber background, dark text, icon):
-    - Text: "Platshållarbilder visas nu. Byt ut bilderna mot riktiga projektfoton innan lansering. Rekommenderad storlek: 800×600 px, format: WebP. Uppdatera bildvägarna i `src/data/projects.ts`."
-    - Add a comment in JSX: `{/* REMOVE THIS BANNER before launch */}`
-  - **Gallery Grid** (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`):
-    - Map `projects` array; each item in a `<figure>`:
-      - `<img src={project.imageUrl} alt={project.caption} loading="lazy" className="w-full h-56 object-cover rounded-t-lg" />`
-      - Hover overlay: `absolute inset-0 bg-brand-blue/70 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center` with the project title in white
-      - `<figcaption className="p-4 text-sm text-neutral-muted">{project.caption}</figcaption>`
-    - Note in code comment: `// Images are from Unsplash (free to use). Replace with client photos before launch.`
-  - **Gallery CTA** below the grid: "Vill du se mer? Kontakta oss för en kostnadsfri konsultation." + `<Button variant="secondary" href="/begar-offert">Begär offert</Button>`
+### Shared Components
 
-- [ ] Create `src/pages/About.tsx` — the Om oss page:
-  - `<PageHelmet title="Om oss – No1 Ställningar Göteborg" description="No1 Ställningar är ett erfaret ställningsföretag baserat i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi." path="/om-oss" />`
-  - **Page Hero**: `<h1>` "Om No1 Ställningar", subtitle "Lokalt förankrade — professionellt genomförda"
-  - **Company Story** (two-column desktop — text left, image right):
-    - `<h2>` "Vår historia"
-    - Body paragraph about the company founding and local Göteborg roots
-    - Placeholder image: `<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80" alt="No1 Ställningar – Ställningar under pågående byggprojekt" loading="lazy" />` with comment `// PLACEHOLDER: replace with real company photo`
-  - **Stats Row**: three amber-accented stat boxes: "10+ år", "100+ projekt", "Certifierad personal"
-  - **Certifications Section** (`bg-neutral-bg`):
-    - `<h2>` "Kompetens och certifiering"
-    - Body text about Arbetsmiljöverket compliance, CE-märkt equipment, working-at-height training
-  - **Safety Section** (`bg-brand-blue text-white`):
-    - `<h2>` "Säkerhet är vår prioritet"
-    - Four bullet points with `<Icon name="check">` in amber:
-      - CE-märkt utrustning enligt EU-standard
-      - Dokumenterade riskbedömningar för varje projekt
-      - Regelbundna säkerhetskontroller av all utrustning
-      - Certifierad utbildning för arbete på höjd
-  - **Service Area** (`bg-white`):
-    - `<h2>` "Vårt verksamhetsområde"
-    - Intro text: "Vi utför ställningsarbeten i Göteborg och omgivande kommuner."
-    - Render `contactInfo.serviceArea` as amber badge chips (`<span className="bg-brand-amber text-white rounded-full px-3 py-1 text-sm">`)
-  - **Full FAQ** (`bg-neutral-bg`):
-    - `<SectionHeading title="Vanliga frågor" id="faq" />` — add `id="faq"` to the wrapper div so the `/tjanster` "Se alla frågor" link deep-links here
-    - `<Accordion items={faqItems} />` — all six items
+- [x] Create `src/components/AccordionItem.tsx` — a single collapsible FAQ row. Props: `question: string`, `answer: string`, `isOpen: boolean`, `onToggle: () => void`. Animated height transition using Tailwind's `transition-all duration-300`. Chevron icon rotates 180° when open. Full keyboard support (Enter/Space to toggle, proper `aria-expanded` and `aria-controls`).
+- [x] Create `src/components/Accordion.tsx` — wraps a list of `AccordionItem` components. Manages open/close state (only one item open at a time). Accepts `items: FaqItem[]`.
 
-- [ ] Create `src/pages/Contact.tsx` — the Kontakt page:
-  - `<PageHelmet title="Kontakt – No1 Ställningar Göteborg" description="Kontakta No1 Ställningar i Göteborg. Ring, maila eller besök oss. Vi svarar snabbt på alla förfrågningar." path="/kontakt" />`
-  - **Page Hero**: `<h1>` "Kontakta oss", subtitle "Vi svarar på alla förfrågningar inom 24 timmar på vardagar"
-  - **Contact + Map** (two-column desktop):
-    - Left column — contact details from `contactInfo`:
-      - Phone: `<a href={`tel:${contactInfo.phone}`}>` with `<Icon name="phone" />` — large, tappable (min 44px tap target)
-      - Email: `<a href={`mailto:${contactInfo.email}`}>` with `<Icon name="email" />`
-      - Address with `<Icon name="location" />`
-      - Opening hours: `<table>` or `<dl>` with rows from `contactInfo.openingHours`
-      - `<Button variant="secondary" href="/begar-offert">Begär offert</Button>`
-    - Right column — Google Maps embed:
-      - If `contactInfo.googleMapsEmbedUrl` is non-empty: render `<iframe src={...} title="Karta över No1 Ställningar i Göteborg" aria-label="Google Maps karta" width="100%" height="400" loading="lazy" />`
-      - If empty (default): render a styled placeholder `<div className="bg-neutral-bg border-2 border-dashed border-neutral-300 h-96 flex items-center justify-center rounded-lg">` with text "Karta visas här. Lägg till Google Maps embed-URL i src/data/contact.ts." — styled noticeably so it won't be accidentally shipped
-  - **Quick CTA Banner** at the bottom: click-to-call and click-to-email buttons side by side — "Snabbaste sättet att nå oss:"
+### Projects Page (`src/pages/Projects.tsx`)
 
-- [ ] Run `npm run dev` and verify all three pages at 375px and 1280px:
-  - Gallery images load lazily (check Network tab — images outside viewport should not load immediately)
-  - About page FAQ accordion opens/closes with keyboard and mouse
-  - Contact page map placeholder is visible and clearly marked
-  - No TypeScript errors: `npx tsc --noEmit`
+- [x] Create `src/pages/Projects.tsx` with `<Helmet>`:
+  - `<title>Projekt – Referensbilder | No1 Ställningar</title>`
+  - `<meta name="description" content="Se exempel på våra genomförda ställningsprojekt i Göteborg och omnejd — fasadrenovering, nybyggnation, takskydd och mer." />`
+
+- [x] **Page Hero:** Same banner pattern as Services:
+  - `<h1>` "Våra projekt"
+  - Subtitle: "Ett urval av genomförda projekt i Göteborg och omnejd"
+
+- [x] **Gallery Grid:** Responsive image grid:
+  - Layout: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` with `gap-6`
+  - Each cell: image (lazy loaded — `loading="lazy"`) with descriptive Swedish `alt` text, title overlay on hover (CSS overlay with `opacity-0 hover:opacity-100 transition-opacity`)
+  - Below each image: `<p>` with the project caption from `projects` data
+  - Images wrapped in `<figure>` with `<figcaption>`
+  - A clearly visible note at the top of the page for the client: "Byt ut platshållarbilderna mot riktiga projektfoton. Rekommenderad bildstorlek: 800×600 px, format: WebP." — style this as an info banner that can be easily removed before launch
+
+- [x] **Call-to-Action:** Below the grid — "Vill du se mer? Kontakta oss för en kostnadsfri konsultation." with a "Begär offert" button
+
+### About Page (`src/pages/About.tsx`)
+
+- [x] Create `src/pages/About.tsx` with `<Helmet>`:
+  - `<title>Om oss – No1 Ställningar Göteborg</title>`
+  - `<meta name="description" content="No1 Ställningar är ett erfarent ställningsföretag baserat i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi." />`
+
+- [x] **Page Hero:**
+  - `<h1>` "Om No1 Ställningar"
+  - Subtitle: "Lokalt förankrade — professionellt genomförda"
+
+- [x] **Company Story Section:** Two-column layout on desktop (text left, placeholder image right):
+  - `<h2>` "Vår historia"
+  - Body text: "No1 Ställningar är ett Göteborgsbaserat företag med lång erfarenhet av ställningslösningar för byggbranschen. Vi grundades med en enkel idé: att erbjuda pålitliga, säkra och flexibla ställningar till konkurrenskraftiga priser. Idag är vi ett pålitligt val för byggföretag, fastighetsägare och privatpersoner i hela Göteborgsregionen."
+  - Placeholder image with Swedish alt text: `alt="No1 Ställningar – Ställningar under pågående byggprojekt"`
+
+- [x] **Experience & Certifications Section:**
+  - `<h2>` "Kompetens och certifiering"
+  - Body: "Vår personal är utbildad och certifierad för arbete på höjd i enlighet med Arbetsmiljöverkets föreskrifter. Vi genomför regelbundna säkerhetskontroller och håller oss uppdaterade på gällande regler och standarder inom branschen."
+  - Three stat boxes: "10+ år", "100+ projekt", "Certifierad personal" — styled with amber numbers
+
+- [x] **Safety Philosophy Section:** Blue background with white text:
+  - `<h2>` "Säkerhet är vår prioritet"
+  - Body: "Varje ställning vi monterar inspekteras noggrant innan överlämning. Vi arbetar enligt gällande arbetsmiljölagstiftning och EU-standarder. CE-märkt utrustning, dokumenterade riskbedömningar och utbildad personal är självklarheter för oss."
+  - Four bullet points with check icons: certifications, risk assessments, regular equipment inspection, working-at-height training
+
+- [x] **Service Area Section:**
+  - `<h2>` "Vårt verksamhetsområde"
+  - Body: "Vi utför ställningsarbeten i Göteborg och omgivande kommuner."
+  - Display `serviceArea` array from `contactInfo` as styled tag/badge list in amber
+
+- [x] **Full FAQ Section:**
+  - `<h2>` "Vanliga frågor"
+  - Render full `<Accordion items={faqItems} />` with all items from `faq.ts`
+
+### Contact Page (`src/pages/Contact.tsx`)
+
+- [x] Create `src/pages/Contact.tsx` with `<Helmet>`:
+  - `<title>Kontakt – No1 Ställningar Göteborg</title>`
+  - `<meta name="description" content="Kontakta No1 Ställningar i Göteborg. Ring, maila eller besök oss. Vi svarar snabbt på alla förfrågningar." />`
+
+- [x] **Page Hero:**
+  - `<h1>` "Kontakta oss"
+  - Subtitle: "Vi svarar på alla förfrågningar inom 24 timmar på vardagar"
+
+- [x] **Contact Info + Map Section:** Two-column layout on desktop:
+  - Left column: contact details using `contactInfo` data
+    - Phone with `<a href="tel:{phone}">` and phone icon — large, tappable for mobile
+    - Email with `<a href="mailto:{email}">` and email icon
+    - Address with location icon
+    - Opening hours table rendered from `openingHours` array
+    - "Begär offert" button linking to `/begar-offert`
+  - Right column: Google Maps embed (`<iframe>`) using `contactInfo.googleMapsEmbedUrl`. If URL is empty, show a styled placeholder `<div>` with text "Karta läggs till när Google Maps embed-URL är konfigurerad." — the placeholder must be visually obvious so it's not accidentally shipped. Add `title="Karta över No1 Ställningar i Göteborg"` and `aria-label` to the iframe for accessibility.
+
+- [x] **Quick Contact CTA:** Bottom banner — "Snabbaste sättet att nå oss är via telefon eller e-post. Vi svarar normalt inom några timmar på vardagar." with click-to-call and click-to-email buttons side by side.
+
+- [x] Run `npm run dev` and verify all three pages render correctly at mobile and desktop breakpoints
