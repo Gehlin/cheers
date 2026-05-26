@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans text-neutral-body bg-white; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-brand-amber; }
+  a { @apply transition-colors duration-200; }
+}
+
+@layer utilities {
+  .section-padding { @apply py-16 px-4 sm:px-6 lg:px-8; }
+  .container-max  { @apply max-w-7xl mx-auto; }
+}
