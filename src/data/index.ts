@@ -1,0 +1,6 @@
+export * from './contact'
+export * from './navigation'
+export * from './services'
+export * from './testimonials'
+export * from './projects'
+export * from './faq'
