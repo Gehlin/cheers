@@ -68,7 +68,7 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 
 ### Pre-Launch Client Checklist
 
-- [ ] Add a `## Before Launch Checklist` section to `README.md` with these items for the client:
+- [x] Add a `## Before Launch Checklist` section to `README.md` with these items for the client:
   ```
   - [ ] Replace all placeholder images in src/data/projects.ts with real project photos
   - [ ] Update contactInfo.phone in src/data/contact.ts with the real phone number
@@ -88,6 +88,7 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
   - [ ] Submit sitemap.xml to Google Search Console
   - [ ] Verify the JSON-LD schema with Google's Rich Results Test
   ```
+  <!-- Done: all 13 checklist items already present in README.md (lines 156–177) — included during the README creation commit (9f7c79e). File uses correct Swedish filename `Projekt.tsx` (the task doc had a typo `Projects.tsx`). Content verified to match all specified items exactly. -->
 
 ### Final Build Verification
 
