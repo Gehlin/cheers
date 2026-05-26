@@ -7,7 +7,7 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 
 ### README
 
-- [ ] Create `README.md` in the repo root (English) with these sections:
+- [x] Create `README.md` in the repo root (English) with these sections:
   1. **Project Overview** — what the site is, tech stack summary (Vite, React, TypeScript, Tailwind, React Router, Resend, Vercel)
   2. **Prerequisites** — Node.js 18+, npm 9+
   3. **Local Development:**
