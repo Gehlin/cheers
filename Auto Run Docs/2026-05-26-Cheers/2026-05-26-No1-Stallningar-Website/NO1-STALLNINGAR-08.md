@@ -69,25 +69,19 @@ Write the English README, add the GDPR cookie note, do a final responsive + perf
 ### Pre-Launch Client Checklist
 
 - [x] Add a `## Before Launch Checklist` section to `README.md` with these items for the client:
-  ```
-  - [ ] Replace all placeholder images in src/data/projects.ts with real project photos
-  - [ ] Update contactInfo.phone in src/data/contact.ts with the real phone number
-  - [ ] Update contactInfo.address.street and contactInfo.address.postalCode in src/data/contact.ts
-  - [ ] Add the Google Maps embed URL to contactInfo.googleMapsEmbedUrl in src/data/contact.ts
-  - [ ] Verify the Resend "from" email domain is configured and verified in Resend dashboard (api/quote.ts)
-  - [ ] Set RESEND_API_KEY and QUOTE_RECIPIENT_EMAIL in Vercel environment variables
-  - [ ] Update the canonical URL (https://no1stallningar.se) in:
-       - src/components/LocalBusinessSchema.tsx
-       - src/components/PageHelmet.tsx
-       - public/sitemap.xml
-       - public/robots.txt
-  - [ ] Update geo coordinates in src/data/contact.ts to the exact business address
-  - [ ] Add real testimonials from actual customers in src/data/testimonials.ts
-  - [ ] Remove the placeholder info banner from src/pages/Projects.tsx
-  - [ ] Test the quote form end-to-end in production (submit a real test request)
-  - [ ] Submit sitemap.xml to Google Search Console
-  - [ ] Verify the JSON-LD schema with Google's Rich Results Test
-  ```
+  - Replace all placeholder images in src/data/projects.ts with real project photos
+  - Update contactInfo.phone in src/data/contact.ts with the real phone number
+  - Update contactInfo.address.street and contactInfo.address.postalCode in src/data/contact.ts
+  - Add the Google Maps embed URL to contactInfo.googleMapsEmbedUrl in src/data/contact.ts
+  - Verify the Resend "from" email domain is configured and verified in Resend dashboard (api/quote.ts)
+  - Set RESEND_API_KEY and QUOTE_RECIPIENT_EMAIL in Vercel environment variables
+  - Update the canonical URL (https://no1stallningar.se) in: src/components/LocalBusinessSchema.tsx, src/components/PageHelmet.tsx, public/sitemap.xml, public/robots.txt
+  - Update geo coordinates in src/data/contact.ts to the exact business address
+  - Add real testimonials from actual customers in src/data/testimonials.ts
+  - Remove the placeholder info banner from src/pages/Projekt.tsx
+  - Test the quote form end-to-end in production (submit a real test request)
+  - Submit sitemap.xml to Google Search Console
+  - Verify the JSON-LD schema with Google's Rich Results Test
   <!-- Done: all 13 checklist items already present in README.md (lines 156–177) — included during the README creation commit (9f7c79e). File uses correct Swedish filename `Projekt.tsx` (the task doc had a typo `Projects.tsx`). Content verified to match all specified items exactly. -->
 
 ### Final Build Verification

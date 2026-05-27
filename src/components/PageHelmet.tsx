@@ -10,7 +10,7 @@ interface PageHelmetProps {
 }
 
 const SITE_NAME = 'No1 Ställningar'
-const BASE_URL = 'https://no1stallningar.se' // Update to real domain before launch
+const BASE_URL = 'https://no1scaff.se'
 
 /**
  * Reusable Helmet helper that renders the full <head> meta block:

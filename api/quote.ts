@@ -3,12 +3,11 @@ import { Resend } from 'resend'
 
 // NOTE: The `from` address below uses the default Resend onboarding address for testing.
 // Before going to production, add and verify your own sender domain in the Resend dashboard
-// (https://resend.com/domains) and update the `from` field to something like:
-//   from: 'offert@no1stallningar.se'
+// (https://resend.com/domains) and update the `from` field to 'offert@no1scaff.se'.
 // Until a verified domain is in place, keep using 'onboarding@resend.dev' for local/staging testing.
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const RECIPIENT = process.env.QUOTE_RECIPIENT_EMAIL ?? 'martin@mwstallningar.se'
+const RECIPIENT = process.env.QUOTE_RECIPIENT_EMAIL ?? 'martin@no1scaff.se'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -48,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await resend.emails.send({
-      from: 'onboarding@resend.dev', // Update to a verified sender domain in Resend before production
+      from: 'offert@no1scaff.se', // Verified sender domain — update to 'onboarding@resend.dev' for local testing if domain not yet verified
       to: RECIPIENT,
       replyTo: email,
       subject: `Offertförfrågan från ${name}`,

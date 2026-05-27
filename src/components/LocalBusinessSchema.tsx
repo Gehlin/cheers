@@ -14,7 +14,7 @@ export default function LocalBusinessSchema() {
     '@type': 'LocalBusiness',
     name: contactInfo.companyName,
     legalName: contactInfo.legalName,
-    url: 'https://no1stallningar.se', // Update to real domain before launch
+    url: 'https://no1scaff.se',
     telephone: contactInfo.phone,
     email: contactInfo.email,
     address: {

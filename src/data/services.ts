@@ -2,28 +2,28 @@ import type { ServiceItem } from '@/types'
 
 export const services: ServiceItem[] = [
   {
-    id: 'fasad',
-    title: 'Fasadställningar',
-    description: 'Professionella fasadställningar för alla typer av byggprojekt. Vi anpassar konstruktionen efter byggnadens form och projektets behov, med fokus på säkerhet och tillgänglighet.',
+    id: 'byggnadsstellningar',
+    title: 'Byggnadsställningar',
+    description: 'No 1 Scaffolding Company AB i Göteborg erbjuder alla typer av byggnadsställningar och fasadställningar, för både renovering och nyproduktion. Vi har inga begränsningar och anpassar varje lösning efter projektets krav.',
     icon: 'building',
-  },
-  {
-    id: 'rull',
-    title: 'Rullställningar',
-    description: 'Mobila rullställningar för inomhus- och utomhusarbeten där flexibilitet krävs. Enkla att flytta och anpassa — perfekta för underhållsarbeten och mindre renoveringar.',
-    icon: 'arrows',
   },
   {
     id: 'vaderskydd',
     title: 'Väderskydd',
-    description: 'Heltäckande väderskydd som skyddar byggarbetsplatsen mot regn, vind och kyla. Möjliggör arbete året runt och skyddar material och konstruktion under byggtiden.',
+    description: 'Väderskydd är till för att exempelvis täcka in en hel byggnad eller användas som tillfälligt förråd eller fältverkstad. Vi använder UBIX — de bästa och mest flexibla skydden på marknaden idag.',
     icon: 'cloud',
   },
   {
-    id: 'takskydd',
-    title: 'Takskydd / Skyddstak',
-    description: 'Skyddstak och takskyddssystem som säkrar arbete på höjd och skyddar omgivningen. Uppfyller gällande säkerhetskrav och anpassas till projektets specifika förhållanden.',
+    id: 'fallskydd',
+    title: 'Fallskydd & bygghissar',
+    description: 'Med ett professionellt fallskydd från exempelvis Safetyrespect eller Combisafe blir arbetsplatsen säker för de som arbetar på området. Vi monterar byggnadshissar, trapptorn och avlastningstorn för alla typer av byggen.',
     icon: 'shield',
+  },
+  {
+    id: 'skyltsstall',
+    title: 'Skyltställ',
+    description: 'Vi bygger skyltställ för att kunna exponera företagen som är inblandade i projektet samt hur området kommer att se ut.',
+    icon: 'arrows',
   },
   {
     id: 'hyra',

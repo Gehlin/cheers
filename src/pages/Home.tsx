@@ -75,7 +75,7 @@ export default function Home() {
               { icon: 'location' as const, label: 'Göteborg & omnejd' },
             ].map(({ icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-3">
-                <div className="w-14 h-14 rounded-full bg-brand-amber/10 flex items-center justify-center text-brand-amber">
+                <div className="w-14 h-14 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink">
                   <Icon name={icon} className="w-7 h-7" />
                 </div>
                 <p className="font-semibold text-lg text-neutral-body">{label}</p>
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Link
               to="/tjanster"
-              className="text-brand-amber font-semibold hover:text-brand-amber-dark underline underline-offset-4"
+              className="text-brand-pink font-semibold hover:text-brand-pink-dark underline underline-offset-4"
             >
               Se alla tjänster →
             </Link>
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {whyPoints.map(({ title, body }) => (
               <div key={title} className="flex gap-4">
-                <div className="mt-1 w-8 h-8 rounded-full bg-brand-amber/10 flex-shrink-0 flex items-center justify-center text-brand-amber">
+                <div className="mt-1 w-8 h-8 rounded-full bg-brand-pink/10 flex-shrink-0 flex items-center justify-center text-brand-pink">
                   <Icon name="check" className="w-4 h-4" />
                 </div>
                 <div>

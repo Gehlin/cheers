@@ -8,7 +8,7 @@ interface ServiceCardProps {
 export default function ServiceCard({ service }: ServiceCardProps) {
   return (
     <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 hover:-translate-y-1 transition-transform duration-200 flex flex-col gap-4">
-      <div className="w-12 h-12 rounded-lg bg-brand-amber/10 flex items-center justify-center text-brand-amber">
+      <div className="w-12 h-12 rounded-lg bg-brand-pink/10 flex items-center justify-center text-brand-pink">
         <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} className="w-6 h-6" />
       </div>
       <div>

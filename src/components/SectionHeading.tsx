@@ -10,7 +10,7 @@ export default function SectionHeading({ title, subtitle, align = 'center' }: Se
   return (
     <div className={`flex flex-col gap-3 mb-10 ${alignClass}`}>
       <h2 className="text-3xl font-bold text-neutral-body">{title}</h2>
-      <span className="block w-12 h-1 rounded bg-brand-amber" aria-hidden="true" />
+      <span className="block w-12 h-1 rounded bg-brand-pink" aria-hidden="true" />
       {subtitle && <p className="text-neutral-muted text-lg max-w-2xl">{subtitle}</p>}
     </div>
   )

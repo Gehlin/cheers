@@ -13,7 +13,7 @@ export default function BegarOffert() {
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
+      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
         <div className="container-max w-full">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Begär offert</h1>
           <p className="text-lg text-white/80 max-w-xl">
@@ -38,20 +38,25 @@ export default function BegarOffert() {
               <div>
                 <h2 className="text-lg font-bold text-neutral-body mb-4">Kontakta oss direkt</h2>
                 <div className="space-y-4">
-                  <a
-                    href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-3 text-brand-amber hover:text-brand-amber-dark transition-colors font-semibold"
-                  >
-                    <Icon name="phone" className="w-5 h-5 flex-shrink-0" />
-                    {contactInfo.phone}
-                  </a>
-                  <a
-                    href={`mailto:${contactInfo.email}`}
-                    className="flex items-center gap-3 text-brand-amber hover:text-brand-amber-dark transition-colors font-semibold"
-                  >
-                    <Icon name="email" className="w-5 h-5 flex-shrink-0" />
-                    {contactInfo.email}
-                  </a>
+                  {contactInfo.contacts.map((contact) => (
+                    <div key={contact.name} className="space-y-1">
+                      <p className="font-semibold text-neutral-body text-sm">{contact.name}</p>
+                      <a
+                        href={contact.phoneHref}
+                        className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold"
+                      >
+                        <Icon name="phone" className="w-5 h-5 flex-shrink-0" />
+                        {contact.phone}
+                      </a>
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold"
+                      >
+                        <Icon name="email" className="w-5 h-5 flex-shrink-0" />
+                        {contact.email}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -64,15 +69,15 @@ export default function BegarOffert() {
                 <h3 className="font-bold text-neutral-body mb-2">Vad händer härnäst?</h3>
                 <ol className="text-sm text-neutral-muted space-y-2 list-none">
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-amber/10 text-brand-amber font-bold w-5 h-5 flex items-center justify-center text-xs">1</span>
+                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-pink/10 text-brand-pink font-bold w-5 h-5 flex items-center justify-center text-xs">1</span>
                     Vi granskar din förfrågan och kontaktar dig för eventuella frågor.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-amber/10 text-brand-amber font-bold w-5 h-5 flex items-center justify-center text-xs">2</span>
+                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-pink/10 text-brand-pink font-bold w-5 h-5 flex items-center justify-center text-xs">2</span>
                     Vi tar fram en kostnadsfri offert baserad på ditt projekt.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-amber/10 text-brand-amber font-bold w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-pink/10 text-brand-pink font-bold w-5 h-5 flex items-center justify-center text-xs">3</span>
                     Du godkänner offerten — sedan kör vi igång!
                   </li>
                 </ol>

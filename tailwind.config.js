@@ -5,10 +5,11 @@ export default {
     extend: {
       colors: {
         brand: {
+          pink:         '#E91E8C',
+          'pink-dark':  '#C2185B',
+          // Kept for backward-compat references (hero sections, dark backgrounds)
           blue:         '#1B2A4A',
           'blue-dark':  '#111d34',
-          amber:        '#F59E0B',
-          'amber-dark': '#D97706',
         },
         neutral: {
           bg:    '#F8F9FA',

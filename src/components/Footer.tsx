@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { contactInfo } from '@/data/contact'
 
 const quickLinks = [
   { to: '/',            label: 'Hem' },
@@ -9,37 +10,36 @@ const quickLinks = [
   { to: '/begar-offert', label: 'Begär offert' },
 ]
 
-const serviceAreas = ['Mölndal', 'Partille', 'Kungsbacka', 'Lerum', 'Härryda']
-
 export default function Footer() {
   return (
-    <footer className="bg-brand-blue text-white">
+    <footer className="bg-brand-pink text-white">
       <div className="container-max px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1 — Company info */}
           <div>
             <p className="text-xl font-bold mb-1">
-              No1 <span className="text-brand-amber">Ställningar</span>
+              No1 Ställningar
             </p>
-            <p className="text-neutral-muted text-sm mb-4">
+            <p className="text-white/70 text-sm mb-4">
               Professionell ställningsuthyrning i Göteborg
             </p>
             <address className="not-italic text-sm text-white/80 space-y-1.5">
-              <p>Göteborg, Sverige</p>
+              <p>{contactInfo.address.street}, {contactInfo.address.postalCode}</p>
+              <p>{contactInfo.address.city}</p>
               <p>
                 <a
-                  href="tel:+46700000000"
-                  className="hover:text-brand-amber transition-colors"
+                  href={contactInfo.phoneHref}
+                  className="hover:text-white transition-colors"
                 >
-                  +46 70 000 00 00
+                  {contactInfo.phone}
                 </a>
               </p>
               <p>
                 <a
-                  href="mailto:info@no1stallningar.se"
-                  className="hover:text-brand-amber transition-colors"
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-white transition-colors"
                 >
-                  info@no1stallningar.se
+                  {contactInfo.email}
                 </a>
               </p>
             </address>
@@ -59,7 +59,7 @@ export default function Footer() {
                   <li key={to}>
                     <NavLink
                       to={to}
-                      className="text-white/80 hover:text-brand-amber transition-colors"
+                      className="text-white/80 hover:text-white transition-colors"
                     >
                       {label}
                     </NavLink>
@@ -76,7 +76,7 @@ export default function Footer() {
             </h3>
             <p className="text-sm text-white/80 leading-relaxed">
               Vi utför arbeten i Göteborg med omnejd:{' '}
-              {serviceAreas.join(', ')}
+              {contactInfo.serviceArea.slice(1).join(', ')}
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-max px-4 sm:px-6 lg:px-8 py-4 text-center text-xs text-white/50">
-          © {new Date().getFullYear()} No1 Ställningar. Alla rättigheter förbehållna.
+          © {new Date().getFullYear()} {contactInfo.legalName}. Alla rättigheter förbehållna.
         </div>
       </div>
     </footer>

@@ -25,7 +25,7 @@ export default function AccordionItem({ question, answer, isOpen, onToggle }: Ac
         id={buttonId}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-amber transition-colors"
+        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-pink transition-colors"
         onClick={onToggle}
         onKeyDown={handleKeyDown}
       >

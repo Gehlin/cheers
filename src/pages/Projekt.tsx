@@ -13,7 +13,7 @@ export default function Projekt() {
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
+      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
         <div className="container-max w-full">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Våra projekt</h1>
           <p className="text-lg text-white/80 max-w-xl">
@@ -26,9 +26,9 @@ export default function Projekt() {
       <section className="bg-neutral-bg section-padding">
         <div className="container-max">
           {/* Client notice — remove before launch */}
-          <div className="mb-8 flex items-start gap-3 rounded-lg border-2 border-dashed border-brand-amber bg-brand-amber/10 p-4 text-sm text-neutral-body">
+          <div className="mb-8 flex items-start gap-3 rounded-lg border-2 border-dashed border-brand-pink bg-brand-pink/10 p-4 text-sm text-neutral-body">
             <svg
-              className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-amber"
+              className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-pink"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -56,7 +56,7 @@ export default function Projekt() {
                     loading="lazy"
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-brand-blue/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                  <div className="absolute inset-0 bg-brand-pink/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
                     <p className="text-white font-semibold text-center text-lg">{project.title}</p>
                   </div>
                 </div>

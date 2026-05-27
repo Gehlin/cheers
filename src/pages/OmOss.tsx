@@ -12,6 +12,29 @@ const safetyPoints = [
   'Certifierad utbildning för arbete på höjd',
 ]
 
+const companyValues = [
+  {
+    title: 'Ständigt växande',
+    body: 'No1 Scaffolding Company är ett företag i ständig tillväxt. Vår målsättning är att vara landets bästa ställningsföretag med stor fokus på kvalitet och kundmottagande.',
+    icon: 'arrows' as const,
+  },
+  {
+    title: 'Miljöpolicy',
+    body: 'Vår strävan är att minska mängden förbrukningsmaterial och återanvända så mycket som möjligt, samt se över transporter för att minska våra utsläpp.',
+    icon: 'cloud' as const,
+  },
+  {
+    title: 'Vår affärsidé',
+    body: 'Vår affärsidé är att vara en frisk fläkt i branschen och ständigt söka nya sätt att utveckla och förbättra. Vi bygger långsiktiga relationer som gynnar både dig som kund och vår möjlighet att arbeta effektivt.',
+    icon: 'building' as const,
+  },
+  {
+    title: 'Kvalitet',
+    body: 'I all verksamhet sträva efter att ständigt förbättra våra produkter och tjänster och anpassa dem efter våra kunders behov.',
+    icon: 'check' as const,
+  },
+]
+
 export default function OmOss() {
   return (
     <>
@@ -22,7 +45,7 @@ export default function OmOss() {
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
+      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
         <div className="container-max w-full">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Om No1 Ställningar</h1>
           <p className="text-lg text-white/80 max-w-xl">
@@ -38,16 +61,14 @@ export default function OmOss() {
             <div>
               <SectionHeading title="Vår historia" align="left" />
               <p className="text-neutral-muted leading-relaxed">
-                No1 Ställningar är ett Göteborgsbaserat företag med lång erfarenhet av
-                ställningslösningar för byggbranschen. Vi grundades med en enkel idé: att erbjuda
-                pålitliga, säkra och flexibla ställningar till konkurrenskraftiga priser. Idag är vi
-                ett pålitligt val för byggföretag, fastighetsägare och privatpersoner i hela
-                Göteborgsregionen.
+                No 1 Scaffolding Company AB i Göteborg är ett ställningsföretag som erbjuder allt
+                inom byggnadsställningar. Med bred kompetens, lång erfarenhet och rätt utbildning
+                monterar vi ställningar åt kunder i Västra Götaland och Hallands län.
               </p>
             </div>
             <div className="rounded-xl overflow-hidden bg-neutral-100 flex items-center justify-center h-72 lg:h-auto">
               <img
-                src="https://placehold.co/800x600/1B2A4A/ffffff?text=No1+Ställningar"
+                src="https://placehold.co/800x600/E91E8C/ffffff?text=No1+Ställningar"
                 alt="No1 Ställningar – Ställningar under pågående byggprojekt"
                 loading="lazy"
                 className="w-full h-full object-cover"
@@ -57,8 +78,31 @@ export default function OmOss() {
         </div>
       </section>
 
-      {/* Experience & Certifications */}
+      {/* Company Values 2×2 Grid */}
       <section className="bg-neutral-bg section-padding">
+        <div className="container-max">
+          <SectionHeading title="Våra värderingar" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {companyValues.map(({ title, body, icon }) => (
+              <div
+                key={title}
+                className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 flex gap-5"
+              >
+                <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex-shrink-0 flex items-center justify-center text-brand-pink">
+                  <Icon name={icon} className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-neutral-body mb-2">{title}</h3>
+                  <p className="text-neutral-muted text-sm leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience & Certifications */}
+      <section className="bg-white section-padding">
         <div className="container-max">
           <SectionHeading title="Kompetens och certifiering" />
           <p className="text-neutral-muted leading-relaxed text-center max-w-2xl mx-auto mb-10">
@@ -76,7 +120,7 @@ export default function OmOss() {
                 key={label}
                 className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 text-center"
               >
-                <p className="text-4xl font-bold text-brand-amber mb-2">{value}</p>
+                <p className="text-4xl font-bold text-brand-pink mb-2">{value}</p>
                 <p className="text-neutral-muted font-medium">{label}</p>
               </div>
             ))}
@@ -85,7 +129,7 @@ export default function OmOss() {
       </section>
 
       {/* Safety Philosophy */}
-      <section className="bg-brand-blue text-white section-padding">
+      <section className="bg-brand-pink text-white section-padding">
         <div className="container-max max-w-3xl">
           <SectionHeading title="Säkerhet är vår prioritet" />
           <p className="text-white/80 leading-relaxed text-center mb-8">
@@ -96,7 +140,7 @@ export default function OmOss() {
           <ul className="space-y-4">
             {safetyPoints.map((point) => (
               <li key={point} className="flex items-start gap-3">
-                <span className="mt-0.5 flex-shrink-0 text-brand-amber">
+                <span className="mt-0.5 flex-shrink-0 text-white">
                   <Icon name="check" className="w-5 h-5" />
                 </span>
                 <span className="text-white/90">{point}</span>
@@ -117,7 +161,7 @@ export default function OmOss() {
             {contactInfo.serviceArea.map((area) => (
               <span
                 key={area}
-                className="rounded-full bg-brand-amber/10 px-4 py-2 text-sm font-semibold text-brand-amber"
+                className="rounded-full bg-brand-pink/10 px-4 py-2 text-sm font-semibold text-brand-pink"
               >
                 {area}
               </span>

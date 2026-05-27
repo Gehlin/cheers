@@ -14,7 +14,7 @@ function LargeServiceCard({ service }: { service: ServiceItem }) {
       id={service.id}
       className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 flex flex-col sm:flex-row gap-6"
     >
-      <div className="w-16 h-16 rounded-xl bg-brand-amber/10 flex-shrink-0 flex items-center justify-center text-brand-amber">
+      <div className="w-16 h-16 rounded-xl bg-brand-pink/10 flex-shrink-0 flex items-center justify-center text-brand-pink">
         <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} className="w-8 h-8" />
       </div>
       <div>
@@ -30,7 +30,7 @@ function FaqAccordionItem({ question, answer }: { question: string; answer: stri
   return (
     <div className="border-b border-neutral-200 last:border-0">
       <button
-        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-amber transition-colors"
+        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-pink transition-colors"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
@@ -74,12 +74,12 @@ export default function Tjanster() {
     <>
       <PageHelmet
         title="Tjänster – Ställningar & uthyrning i Göteborg"
-        description="Vi erbjuder fasadställningar, rullställningar, väderskydd, takskydd och uthyrning av ställningar i Göteborg. Se alla våra tjänster."
+        description="Vi erbjuder byggnadsställningar, väderskydd, fallskydd, skyltställ och uthyrning av ställningar i Göteborg. Se alla våra tjänster."
         path="/tjanster"
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
+      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
         <div className="container-max w-full">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Våra tjänster</h1>
           <p className="text-lg text-white/80 max-w-xl">
@@ -107,7 +107,7 @@ export default function Tjanster() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map(({ num, title, body }) => (
               <div key={num} className="flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand-amber flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-brand-pink flex items-center justify-center text-white font-bold text-lg">
                   {num}
                 </div>
                 <h3 className="font-semibold text-xl text-neutral-body">{title}</h3>
@@ -130,7 +130,7 @@ export default function Tjanster() {
           <div className="mt-6 text-center">
             <Link
               to="/kontakt"
-              className="text-brand-amber font-semibold hover:text-brand-amber-dark underline underline-offset-4"
+              className="text-brand-pink font-semibold hover:text-brand-pink-dark underline underline-offset-4"
             >
               Se alla frågor →
             </Link>

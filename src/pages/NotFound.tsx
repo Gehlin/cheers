@@ -8,7 +8,7 @@ export default function NotFound() {
         <title>404 – Sidan hittades inte | No1 Ställningar</title>
       </Helmet>
       <div className="section-padding flex flex-col items-center justify-center text-center min-h-[60vh]">
-        <p className="text-8xl font-bold text-brand-amber mb-4">404</p>
+        <p className="text-8xl font-bold text-brand-pink mb-4">404</p>
         <h1 className="text-3xl font-bold text-neutral-body mb-4">
           404 – Sidan hittades inte
         </h1>

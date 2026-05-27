@@ -14,7 +14,7 @@ export default function Kontakt() {
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-blue text-white min-h-[30vh] flex items-center section-padding">
+      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
         <div className="container-max w-full">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Kontakta oss</h1>
           <p className="text-lg text-white/80 max-w-xl">
@@ -23,47 +23,48 @@ export default function Kontakt() {
         </div>
       </section>
 
-      {/* Contact Info + Map */}
+      {/* Two contact cards */}
       <section className="bg-neutral-bg section-padding">
         <div className="container-max">
+          <SectionHeading title="Kontaktpersoner" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {contactInfo.contacts.map((contact) => (
+              <div
+                key={contact.name}
+                className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 flex flex-col gap-5"
+              >
+                <div>
+                  <p className="text-xl font-bold text-neutral-body">{contact.name}</p>
+                </div>
+                <div className="space-y-3">
+                  <a
+                    href={contact.phoneHref}
+                    className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold text-lg"
+                  >
+                    <Icon name="phone" className="w-5 h-5 flex-shrink-0" />
+                    {contact.phone}
+                  </a>
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold"
+                  >
+                    <Icon name="email" className="w-5 h-5 flex-shrink-0" />
+                    {contact.email}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Address + Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left: Contact details */}
+            {/* Left: Address & hours */}
             <div>
-              <SectionHeading title="Kontaktuppgifter" align="left" />
+              <SectionHeading title="Besöksadress & öppettider" align="left" />
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <span className="mt-0.5 text-brand-amber flex-shrink-0">
-                    <Icon name="phone" className="w-6 h-6" />
-                  </span>
-                  <div>
-                    <p className="font-semibold text-neutral-body mb-1">Telefon</p>
-                    <a
-                      href={`tel:${contactInfo.phone}`}
-                      className="text-2xl font-bold text-brand-amber hover:text-brand-amber-dark transition-colors"
-                    >
-                      {contactInfo.phone}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="mt-0.5 text-brand-amber flex-shrink-0">
-                    <Icon name="email" className="w-6 h-6" />
-                  </span>
-                  <div>
-                    <p className="font-semibold text-neutral-body mb-1">E-post</p>
-                    <a
-                      href={`mailto:${contactInfo.email}`}
-                      className="text-brand-amber hover:text-brand-amber-dark transition-colors"
-                    >
-                      {contactInfo.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="mt-0.5 text-brand-amber flex-shrink-0">
+                  <span className="mt-0.5 text-brand-pink flex-shrink-0">
                     <Icon name="location" className="w-6 h-6" />
                   </span>
                   <div>
@@ -136,7 +137,7 @@ export default function Kontakt() {
       </section>
 
       {/* Quick Contact CTA */}
-      <section className="bg-brand-blue text-white section-padding">
+      <section className="bg-brand-pink text-white section-padding">
         <div className="container-max text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Snabb kontakt</h2>
           <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
@@ -145,15 +146,15 @@ export default function Kontakt() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`tel:${contactInfo.phone}`}
-              className="inline-flex items-center gap-2 rounded-md bg-brand-amber px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-amber-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber focus-visible:ring-offset-2"
+              href={contactInfo.phoneHref}
+              className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 font-semibold text-brand-pink transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
             >
               <Icon name="phone" className="w-5 h-5" />
               Ring oss
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="inline-flex items-center gap-2 rounded-md border-2 border-white bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 rounded-md border-2 border-white bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
             >
               <Icon name="email" className="w-5 h-5" />
               Maila oss

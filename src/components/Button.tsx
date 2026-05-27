@@ -28,11 +28,11 @@ type ButtonProps = ButtonAsButton | ButtonAsAnchor
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-brand-amber text-white hover:bg-brand-amber-dark focus-visible:ring-brand-amber',
+    'bg-brand-pink text-white hover:bg-brand-pink-dark focus-visible:ring-brand-pink',
   secondary:
-    'bg-brand-blue text-white hover:bg-brand-blue-dark focus-visible:ring-brand-blue',
+    'bg-white text-brand-pink hover:bg-gray-50 focus-visible:ring-brand-pink',
   outline:
-    'border-2 border-brand-blue text-brand-blue bg-transparent hover:bg-brand-blue hover:text-white focus-visible:ring-brand-blue',
+    'border-2 border-brand-pink text-brand-pink bg-transparent hover:bg-brand-pink hover:text-white focus-visible:ring-brand-pink',
 }
 
 const Spinner = () => (
