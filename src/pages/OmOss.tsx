@@ -30,9 +30,15 @@ const companyValues = [
   },
   {
     title: 'Kvalitet',
-    body: 'I all verksamhet sträva efter att ständigt förbättra våra produkter och tjänster och anpassa dem efter våra kunders behov.',
+    body: 'I all verksamhet strävar vi efter att ständigt förbättra våra produkter och tjänster och anpassa dem efter våra kunders behov.',
     icon: 'check' as const,
   },
+]
+
+const stats = [
+  { value: '10+', label: 'År i branschen' },
+  { value: '100+', label: 'Genomförda projekt' },
+  { value: '✓', label: 'Certifierad personal' },
 ]
 
 export default function OmOss() {
@@ -40,35 +46,43 @@ export default function OmOss() {
     <>
       <PageHelmet
         title="Om oss – Erfaret ställningsföretag i Göteborg"
-        description="No1 Ställningar är ett erfarent ställningsföretag baserat i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi."
+        description="No 1 Scaffolding Company AB är ett erfarent ställningsföretag i Göteborg. Läs om vår historia, kompetens och säkerhetsfilosofi."
         path="/om-oss"
       />
 
-      {/* Page Hero */}
-      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
-        <div className="container-max w-full">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Om No1 Ställningar</h1>
-          <p className="text-lg text-white/80 max-w-xl">
-            Lokalt förankrade — professionellt genomförda
+      {/* Page hero */}
+      <section className="bg-brand-dark text-white section-padding relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px)`,
+          }}
+        />
+        <div className="container-max relative z-10">
+          <p className="eyebrow text-brand-pink mb-5">Lär känna oss</p>
+          <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-5 text-balance">Om No1 Ställningar</h1>
+          <p className="text-lg text-white/60 max-w-xl leading-relaxed">
+            Lokalt förankrade — professionellt genomförda.
           </p>
         </div>
       </section>
 
-      {/* Company Story */}
+      {/* Company story */}
       <section className="bg-white section-padding">
         <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
-              <SectionHeading title="Vår historia" align="left" />
-              <p className="text-neutral-muted leading-relaxed">
+              <SectionHeading eyebrow="Vår historia" title="Om oss" align="left" />
+              <p className="text-neutral-muted leading-relaxed text-base">
                 No 1 Scaffolding Company AB i Göteborg är ett ställningsföretag som erbjuder allt
                 inom byggnadsställningar. Med bred kompetens, lång erfarenhet och rätt utbildning
                 monterar vi ställningar åt kunder i Västra Götaland och Hallands län.
               </p>
             </div>
-            <div className="rounded-xl overflow-hidden bg-neutral-100 flex items-center justify-center h-72 lg:h-auto">
+            <div className="rounded-2xl overflow-hidden bg-neutral-bg border border-neutral-border aspect-[4/3]">
               <img
-                src="https://placehold.co/800x600/E91E8C/ffffff?text=No1+Ställningar"
+                src="https://placehold.co/800x600/F7F7F8/141416?text=Projektbild"
                 alt="No1 Ställningar – Ställningar under pågående byggprojekt"
                 loading="lazy"
                 className="w-full h-full object-cover"
@@ -78,21 +92,35 @@ export default function OmOss() {
         </div>
       </section>
 
-      {/* Company Values 2×2 Grid */}
-      <section className="bg-neutral-bg section-padding">
+      {/* Stats */}
+      <section className="bg-neutral-bg section-pad-sm">
         <div className="container-max">
-          <SectionHeading title="Våra värderingar" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            {stats.map(({ value, label }) => (
+              <div key={label} className="text-center p-8 bg-white rounded-2xl border border-neutral-border">
+                <p className="text-4xl font-black text-brand-pink mb-2">{value}</p>
+                <p className="text-xs font-medium text-neutral-muted uppercase tracking-wider">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company values */}
+      <section className="bg-white section-padding">
+        <div className="container-max">
+          <SectionHeading eyebrow="Vad vi tror på" title="Våra värderingar" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {companyValues.map(({ title, body, icon }) => (
               <div
                 key={title}
-                className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 flex gap-5"
+                className="bg-neutral-bg rounded-2xl border border-neutral-border p-7 flex gap-5 transition-all duration-200 hover:shadow-card-md hover:-translate-y-0.5"
               >
-                <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex-shrink-0 flex items-center justify-center text-brand-pink">
-                  <Icon name={icon} className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-xl bg-brand-pink-tint flex-shrink-0 flex items-center justify-center text-brand-pink">
+                  <Icon name={icon} className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-neutral-body mb-2">{title}</h3>
+                  <h3 className="font-bold text-neutral-body mb-1.5 tracking-tight">{title}</h3>
                   <p className="text-neutral-muted text-sm leading-relaxed">{body}</p>
                 </div>
               </div>
@@ -101,67 +129,36 @@ export default function OmOss() {
         </div>
       </section>
 
-      {/* Experience & Certifications */}
-      <section className="bg-white section-padding">
-        <div className="container-max">
-          <SectionHeading title="Kompetens och certifiering" />
-          <p className="text-neutral-muted leading-relaxed text-center max-w-2xl mx-auto mb-10">
-            Vår personal är utbildad och certifierad för arbete på höjd i enlighet med
-            Arbetsmiljöverkets föreskrifter. Vi genomför regelbundna säkerhetskontroller och håller
-            oss uppdaterade på gällande regler och standarder inom branschen.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { value: '10+', label: 'År i branschen' },
-              { value: '100+', label: 'Genomförda projekt' },
-              { value: '✓', label: 'Certifierad personal' },
-            ].map(({ value, label }) => (
-              <div
-                key={label}
-                className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 text-center"
-              >
-                <p className="text-4xl font-bold text-brand-pink mb-2">{value}</p>
-                <p className="text-neutral-muted font-medium">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Safety Philosophy */}
-      <section className="bg-brand-pink text-white section-padding">
+      {/* Safety — dark band */}
+      <section className="bg-brand-dark text-white section-padding">
         <div className="container-max max-w-3xl">
-          <SectionHeading title="Säkerhet är vår prioritet" />
-          <p className="text-white/80 leading-relaxed text-center mb-8">
+          <SectionHeading eyebrow="Säkerhet" title="Säkerhet är vår prioritet" />
+          <p className="text-white/60 leading-relaxed text-center mb-10">
             Varje ställning vi monterar inspekteras noggrant innan överlämning. Vi arbetar enligt
-            gällande arbetsmiljölagstiftning och EU-standarder. CE-märkt utrustning, dokumenterade
-            riskbedömningar och utbildad personal är självklarheter för oss.
+            gällande arbetsmiljölagstiftning och EU-standarder.
           </p>
-          <ul className="space-y-4">
-            {safetyPoints.map((point) => (
-              <li key={point} className="flex items-start gap-3">
-                <span className="mt-0.5 flex-shrink-0 text-white">
-                  <Icon name="check" className="w-5 h-5" />
+          <ul className="space-y-3.5 max-w-xl mx-auto">
+            {safetyPoints.map(point => (
+              <li key={point} className="flex items-start gap-3.5">
+                <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-pink/20 flex items-center justify-center text-brand-pink">
+                  <Icon name="check" className="w-3 h-3" />
                 </span>
-                <span className="text-white/90">{point}</span>
+                <span className="text-white/80 text-sm">{point}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Service Area */}
-      <section className="bg-white section-padding">
+      {/* Service area */}
+      <section className="bg-white section-pad-sm">
         <div className="container-max text-center">
-          <SectionHeading title="Vårt verksamhetsområde" />
-          <p className="text-neutral-muted leading-relaxed max-w-xl mx-auto mb-8">
-            Vi utför ställningsarbeten i Göteborg och omgivande kommuner.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {contactInfo.serviceArea.map((area) => (
+          <SectionHeading eyebrow="Täckning" title="Vårt verksamhetsområde" />
+          <div className="flex flex-wrap justify-center gap-2.5 max-w-lg mx-auto">
+            {contactInfo.serviceArea.map(area => (
               <span
                 key={area}
-                className="rounded-full bg-brand-pink/10 px-4 py-2 text-sm font-semibold text-brand-pink"
+                className="rounded-full bg-brand-pink-tint border border-brand-pink-subtle px-4 py-1.5 text-sm font-semibold text-brand-pink-dark"
               >
                 {area}
               </span>
@@ -172,8 +169,8 @@ export default function OmOss() {
 
       {/* FAQ */}
       <section className="bg-neutral-bg section-padding">
-        <div className="container-max max-w-3xl">
-          <SectionHeading title="Vanliga frågor" />
+        <div className="container-max max-w-2xl">
+          <SectionHeading eyebrow="Frågor & svar" title="Vanliga frågor" />
           <Accordion items={faqItems} />
         </div>
       </section>

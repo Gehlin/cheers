@@ -1,9 +1,11 @@
 import React from 'react'
 
-type Variant = 'primary' | 'secondary' | 'outline'
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type Size    = 'sm' | 'md' | 'lg'
 
 interface BaseProps {
   variant?: Variant
+  size?: Size
   disabled?: boolean
   loading?: boolean
   className?: string
@@ -28,11 +30,19 @@ type ButtonProps = ButtonAsButton | ButtonAsAnchor
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-brand-pink text-white hover:bg-brand-pink-dark focus-visible:ring-brand-pink',
+    'bg-brand-pink text-white hover:bg-brand-pink-dark shadow-[0_1px_2px_rgb(236_0_140/0.3)] hover:shadow-[0_2px_8px_rgb(236_0_140/0.35)] focus-visible:ring-brand-pink',
   secondary:
-    'bg-white text-brand-pink hover:bg-gray-50 focus-visible:ring-brand-pink',
+    'bg-white text-brand-pink border border-neutral-border hover:border-brand-pink hover:bg-brand-pink-tint focus-visible:ring-brand-pink',
   outline:
-    'border-2 border-brand-pink text-brand-pink bg-transparent hover:bg-brand-pink hover:text-white focus-visible:ring-brand-pink',
+    'border border-brand-pink text-brand-pink bg-transparent hover:bg-brand-pink hover:text-white focus-visible:ring-brand-pink',
+  ghost:
+    'bg-transparent text-neutral-muted hover:text-neutral-body hover:bg-neutral-bg focus-visible:ring-neutral-border',
+}
+
+const sizeClasses: Record<Size, string> = {
+  sm:  'px-3.5 py-2 text-xs gap-1.5',
+  md:  'px-5 py-2.5 text-sm gap-2',
+  lg:  'px-7 py-3.5 text-base gap-2',
 }
 
 const Spinner = () => (
@@ -53,12 +63,19 @@ const Spinner = () => (
 )
 
 export default function Button(props: ButtonProps) {
-  const { variant = 'primary', disabled = false, loading = false, className = '', children } = props
+  const {
+    variant = 'primary',
+    size = 'md',
+    disabled = false,
+    loading = false,
+    className = '',
+    children,
+  } = props
 
   const base =
-    'inline-flex items-center gap-2 px-5 py-2.5 rounded-md font-semibold text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+    'inline-flex items-center justify-center rounded-lg font-semibold tracking-tight transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none'
 
-  const classes = `${base} ${variantClasses[variant]} ${className}`
+  const classes = `${base} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`
 
   if (props.as === 'a') {
     return (

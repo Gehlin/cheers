@@ -3,18 +3,53 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  body { @apply font-sans text-neutral-body bg-white; }
-  :focus-visible { @apply outline-2 outline-offset-2 outline-brand-pink; }
-  a { @apply transition-colors duration-200; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-neutral-body bg-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-pink;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
 }
 
 @layer utilities {
-  .section-padding { @apply py-16 px-4 sm:px-6 lg:px-8; }
-  .container-max  { @apply max-w-7xl mx-auto; }
+  /* Section spacing — generous, 8px-based */
+  .section-padding  { @apply py-20 px-4 sm:px-6 lg:px-8; }
+  .section-pad-lg   { @apply py-28 px-4 sm:px-6 lg:px-8; }
+  .section-pad-sm   { @apply py-14 px-4 sm:px-6 lg:px-8; }
 
-  /* Partner logo ticker — adjust duration: ~3–4s per partner item for comfortable reading speed */
-  /* Default 30s suits 8 partners. Increase to 45s for 12+ partners, decrease to 20s for 4–5 partners. */
+  /* Constrained content width */
+  .container-max    { @apply max-w-screen-xl mx-auto; }
+
+  /* Typography helpers */
+  .text-balance     { text-wrap: balance; }
+
+  /* Eyebrow label — small-caps label above a heading */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.12em] text-brand-pink-dark;
+  }
+}
+
+/* ── Partner logo ticker ──────────────────────────────────────────────────── */
+/* Adjust duration: ~3–4s per partner item for comfortable reading speed.     */
+/* Default 30s suits 8 partners. Increase to 45s for 12+, decrease to 20s   */
+/* for fewer than 5.                                                           */
+@layer utilities {
   .ticker-track {
     display: flex;
     width: max-content;
@@ -31,13 +66,43 @@
   @media (max-width: 640px) {
     .ticker-track { animation-duration: 20s; }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track { animation: none; }
+}
+
+/* ── Scroll-reveal ────────────────────────────────────────────────────────── */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.35s; }
+}
+
+/* ── Masonry grid (Projekt page) ──────────────────────────────────────────── */
+@layer utilities {
+  .masonry {
+    columns: 1;
+    column-gap: 1.5rem;
+  }
+  @media (min-width: 640px)  { .masonry { columns: 2; } }
+  @media (min-width: 1024px) { .masonry { columns: 3; } }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
   }
 }
 
-/* Respect user preference for reduced motion */
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;

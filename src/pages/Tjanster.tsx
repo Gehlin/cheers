@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHelmet from '@/components/PageHelmet'
-import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import Icon from '@/components/Icon'
 import { services } from '@/data/services'
@@ -10,61 +9,55 @@ import type { ServiceItem } from '@/types'
 
 function LargeServiceCard({ service }: { service: ServiceItem }) {
   return (
-    <div
-      id={service.id}
-      className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 flex flex-col sm:flex-row gap-6"
-    >
-      <div className="w-16 h-16 rounded-xl bg-brand-pink/10 flex-shrink-0 flex items-center justify-center text-brand-pink">
-        <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} className="w-8 h-8" />
+    <div id={service.id} className="group relative bg-white rounded-2xl border border-neutral-border p-8 flex flex-col sm:flex-row gap-6 transition-all duration-200 hover:shadow-card-md hover:-translate-y-0.5 overflow-hidden">
+      <span className="absolute left-0 top-8 bottom-8 w-[3px] rounded-full bg-brand-pink opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
+      <div className="w-14 h-14 rounded-xl bg-brand-pink-tint flex-shrink-0 flex items-center justify-center text-brand-pink">
+        <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} className="w-7 h-7" />
       </div>
       <div>
-        <h3 className="text-xl font-semibold text-neutral-body mb-2">{service.title}</h3>
-        <p className="text-neutral-muted leading-relaxed">{service.description}</p>
+        <h3 className="text-xl font-bold text-neutral-body mb-2 tracking-tight">{service.title}</h3>
+        <p className="text-neutral-muted leading-relaxed text-sm">{service.description}</p>
       </div>
     </div>
   )
 }
 
-function FaqAccordionItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border-b border-neutral-200 last:border-0">
+    <div className="border-b border-neutral-divider last:border-0">
       <button
-        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-pink transition-colors"
-        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between py-4 text-left font-semibold text-neutral-body hover:text-brand-pink transition-colors text-sm"
+        onClick={() => setOpen(v => !v)}
         aria-expanded={open}
       >
         <span>{question}</span>
         <svg
-          className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          aria-hidden="true"
+          className={`w-4 h-4 flex-shrink-0 transition-transform duration-200 text-neutral-muted ${open ? 'rotate-180' : ''}`}
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"
         >
           <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
-      {open && <p className="pb-4 text-neutral-muted leading-relaxed">{answer}</p>}
+      {open && <p className="pb-4 text-neutral-muted text-sm leading-relaxed">{answer}</p>}
     </div>
   )
 }
 
 const steps = [
   {
-    num: '1',
+    num: '01',
     title: 'Begär offert',
-    body: 'Fyll i vårt formulär eller ring oss. Vi svarar inom 24 timmar med en kostnadsuppskattning.',
+    body: 'Fyll i formuläret eller ring oss. Vi svarar inom 24 timmar med en kostnadsuppskattning.',
   },
   {
-    num: '2',
+    num: '02',
     title: 'Vi planerar',
     body: 'Tillsammans går vi igenom projektets krav och planerar optimal ställningslösning.',
   },
   {
-    num: '3',
-    title: 'Montering och uppföljning',
+    num: '03',
+    title: 'Montering & uppföljning',
     body: 'Vårt team monterar ställningarna och finns tillgängliga under hela projektet.',
   },
 ]
@@ -74,32 +67,34 @@ export default function Tjanster() {
     <>
       <PageHelmet
         title="Tjänster – Ställningar & uthyrning i Göteborg"
-        description="Vi erbjuder byggnadsställningar, väderskydd, fallskydd, skyltställ och uthyrning av ställningar i Göteborg. Se alla våra tjänster."
+        description="Vi erbjuder byggnadsställningar, väderskydd, fallskydd, skyltställ och uthyrning i Göteborg. Se alla våra tjänster."
         path="/tjanster"
       />
 
-      {/* Page Hero */}
-      <section
-        className="bg-neutral-body text-white min-h-[40vh] flex items-center section-padding relative overflow-hidden"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px)',
-        }}
-      >
-        <div className="container-max w-full relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">Våra tjänster</h1>
-          <p className="text-lg text-white/80 max-w-xl">
-            Professionella ställningslösningar för alla typer av projekt
+      {/* Page hero */}
+      <section className="bg-brand-dark text-white section-padding relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px)`,
+          }}
+        />
+        <div className="container-max relative z-10">
+          <p className="eyebrow text-brand-pink mb-5">Vad vi erbjuder</p>
+          <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-5 text-balance">Våra tjänster</h1>
+          <p className="text-lg text-white/60 max-w-xl leading-relaxed">
+            Professionella ställningslösningar för alla typer av projekt — snabbt, säkert och anpassat.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services grid */}
       <section className="bg-neutral-bg section-padding">
         <div className="container-max">
-          <SectionHeading title="Vad vi erbjuder" align="left" />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {services.map((service) => (
+          <SectionHeading eyebrow="Tjänster" title="Vad vi erbjuder" align="left" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            {services.map(service => (
               <LargeServiceCard key={service.id} service={service} />
             ))}
           </div>
@@ -109,51 +104,55 @@ export default function Tjanster() {
       {/* Process */}
       <section className="bg-white section-padding">
         <div className="container-max">
-          <SectionHeading title="Så här fungerar det" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <SectionHeading eyebrow="Hur det fungerar" title="Så här fungerar det" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {steps.map(({ num, title, body }) => (
-              <div key={num} className="flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand-pink flex items-center justify-center text-white font-bold text-lg">
-                  {num}
+              <div key={num} className="text-center">
+                <div className="w-12 h-12 rounded-xl bg-brand-pink-tint flex items-center justify-center mx-auto mb-5">
+                  <span className="text-brand-pink font-black text-sm">{num}</span>
                 </div>
-                <h3 className="font-semibold text-xl text-neutral-body">{title}</h3>
-                <p className="text-neutral-muted leading-relaxed">{body}</p>
+                <h3 className="font-bold text-lg text-neutral-body mb-2 tracking-tight">{title}</h3>
+                <p className="text-neutral-muted text-sm leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Teaser */}
+      {/* FAQ teaser */}
       <section className="bg-neutral-bg section-padding">
-        <div className="container-max max-w-3xl">
-          <SectionHeading title="Vanliga frågor" />
-          <div className="bg-white rounded-xl shadow-sm border border-neutral-100 px-6">
-            {faqItems.slice(0, 3).map((item) => (
-              <FaqAccordionItem key={item.id} question={item.question} answer={item.answer} />
+        <div className="container-max max-w-2xl">
+          <SectionHeading eyebrow="Frågor" title="Vanliga frågor" />
+          <div className="bg-white rounded-2xl border border-neutral-border px-7 py-2">
+            {faqItems.slice(0, 3).map(item => (
+              <FaqItem key={item.id} question={item.question} answer={item.answer} />
             ))}
           </div>
           <div className="mt-6 text-center">
             <Link
-              to="/kontakt"
-              className="text-brand-pink font-semibold hover:text-brand-pink-dark underline underline-offset-4"
+              to="/om-oss"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-pink-dark hover:text-brand-pink transition-colors"
             >
-              Se alla frågor →
+              Se alla frågor
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="bg-brand-blue text-white section-padding">
-        <div className="container-max text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Redo att komma igång?</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-            Kontakta oss idag för en kostnadsfri offert. Vi svarar inom 24 timmar.
-          </p>
-          <Button as="a" href="/begar-offert" variant="primary" className="text-base px-8 py-3">
+      {/* CTA band */}
+      <section className="bg-brand-pink text-white section-padding">
+        <div className="container-max text-center max-w-xl">
+          <h2 className="text-4xl font-black tracking-tight mb-5">Redo att komma igång?</h2>
+          <p className="text-white/75 mb-8 leading-relaxed">Kontakta oss för en kostnadsfri offert. Vi svarar inom 24 timmar.</p>
+          <a
+            href="/begar-offert"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-white text-brand-pink font-bold text-sm hover:bg-brand-pink-tint transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-brand-pink focus-visible:ring-offset-2"
+          >
             Begär offert
-          </Button>
+          </a>
         </div>
       </section>
     </>

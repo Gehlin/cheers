@@ -1,5 +1,4 @@
 import PageHelmet from '@/components/PageHelmet'
-import Button from '@/components/Button'
 import SectionHeading from '@/components/SectionHeading'
 import Icon from '@/components/Icon'
 import { contactInfo } from '@/data/contact'
@@ -13,43 +12,62 @@ export default function Kontakt() {
         path="/kontakt"
       />
 
-      {/* Page Hero */}
-      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
-        <div className="container-max w-full">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Kontakta oss</h1>
-          <p className="text-lg text-white/80 max-w-xl">
-            Vi svarar på alla förfrågningar inom 24 timmar på vardagar
+      {/* Page hero */}
+      <section className="bg-brand-dark text-white section-padding relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px)`,
+          }}
+        />
+        <div className="container-max relative z-10">
+          <p className="eyebrow text-brand-pink mb-5">Kom i kontakt</p>
+          <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-5">Kontakta oss</h1>
+          <p className="text-lg text-white/60 max-w-xl leading-relaxed">
+            Vi svarar på alla förfrågningar inom 24 timmar på vardagar.
           </p>
         </div>
       </section>
 
-      {/* Two contact cards */}
-      <section className="bg-neutral-bg section-padding">
+      {/* Contacts */}
+      <section className="bg-white section-padding">
         <div className="container-max">
-          <SectionHeading title="Kontaktpersoner" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {contactInfo.contacts.map((contact) => (
+          <SectionHeading eyebrow="Kontaktpersoner" title="Nå oss direkt" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-3xl mx-auto">
+            {contactInfo.contacts.map(contact => (
               <div
                 key={contact.name}
-                className="bg-white rounded-xl p-8 shadow-sm border border-neutral-100 flex flex-col gap-5"
+                className="bg-neutral-bg rounded-2xl border border-neutral-border p-8 flex flex-col gap-6"
               >
                 <div>
-                  <p className="text-xl font-bold text-neutral-body">{contact.name}</p>
+                  <p className="text-xl font-black text-neutral-body tracking-tight">{contact.name}</p>
                 </div>
                 <div className="space-y-3">
                   <a
                     href={contact.phoneHref}
-                    className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold text-lg"
+                    className="flex items-center gap-3 group"
+                    aria-label={`Ring ${contact.name}`}
                   >
-                    <Icon name="phone" className="w-5 h-5 flex-shrink-0" />
-                    {contact.phone}
+                    <span className="w-9 h-9 rounded-lg bg-brand-pink-tint flex items-center justify-center text-brand-pink flex-shrink-0 group-hover:bg-brand-pink group-hover:text-white transition-colors duration-150">
+                      <Icon name="phone" className="w-4 h-4" />
+                    </span>
+                    <span className="font-semibold text-neutral-body text-sm group-hover:text-brand-pink transition-colors">
+                      {contact.phone}
+                    </span>
                   </a>
                   <a
                     href={`mailto:${contact.email}`}
-                    className="flex items-center gap-3 text-brand-pink hover:text-brand-pink-dark transition-colors font-semibold"
+                    className="flex items-center gap-3 group"
+                    aria-label={`Maila ${contact.name}`}
                   >
-                    <Icon name="email" className="w-5 h-5 flex-shrink-0" />
-                    {contact.email}
+                    <span className="w-9 h-9 rounded-lg bg-brand-pink-tint flex items-center justify-center text-brand-pink flex-shrink-0 group-hover:bg-brand-pink group-hover:text-white transition-colors duration-150">
+                      <Icon name="email" className="w-4 h-4" />
+                    </span>
+                    <span className="font-semibold text-neutral-body text-sm group-hover:text-brand-pink transition-colors">
+                      {contact.email}
+                    </span>
                   </a>
                 </div>
               </div>
@@ -58,49 +76,49 @@ export default function Kontakt() {
 
           {/* Address + Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left: Address & hours */}
-            <div>
-              <SectionHeading title="Besöksadress & öppettider" align="left" />
 
-              <div className="space-y-6">
+            {/* Address & hours */}
+            <div>
+              <SectionHeading eyebrow="Besök oss" title="Adress & öppettider" align="left" />
+              <div className="space-y-7">
                 <div className="flex items-start gap-4">
-                  <span className="mt-0.5 text-brand-pink flex-shrink-0">
-                    <Icon name="location" className="w-6 h-6" />
+                  <span className="w-9 h-9 rounded-lg bg-brand-pink-tint flex-shrink-0 flex items-center justify-center text-brand-pink">
+                    <Icon name="location" className="w-4 h-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-neutral-body mb-1">Adress</p>
-                    <p className="text-neutral-muted">
-                      {contactInfo.address.street}
-                      {contactInfo.address.postalCode && `, ${contactInfo.address.postalCode}`}
-                      <br />
-                      {contactInfo.address.city}
+                    <p className="font-semibold text-neutral-body text-sm mb-1">Adress</p>
+                    <p className="text-neutral-muted text-sm leading-relaxed">
+                      {contactInfo.address.street}<br />
+                      {contactInfo.address.postalCode} {contactInfo.address.city}
                     </p>
                   </div>
                 </div>
 
-                {/* Opening hours */}
                 <div>
-                  <p className="font-semibold text-neutral-body mb-3">Öppettider</p>
+                  <p className="font-semibold text-neutral-body text-sm mb-3">Öppettider</p>
                   <table className="text-sm w-full max-w-xs">
                     <tbody>
                       {contactInfo.openingHours.map(({ days, hours }) => (
-                        <tr key={days} className="border-b border-neutral-100 last:border-0">
-                          <td className="py-2 text-neutral-body font-medium pr-8">{days}</td>
-                          <td className="py-2 text-neutral-muted">{hours}</td>
+                        <tr key={days} className="border-b border-neutral-divider last:border-0">
+                          <td className="py-2 text-neutral-body text-sm pr-8">{days}</td>
+                          <td className="py-2 text-neutral-muted text-sm">{hours}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
 
-                <Button as="a" href="/begar-offert" variant="primary" className="mt-2">
+                <a
+                  href="/begar-offert"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-pink text-white font-semibold text-sm hover:bg-brand-pink-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2"
+                >
                   Begär offert
-                </Button>
+                </a>
               </div>
             </div>
 
-            {/* Right: Map */}
-            <div className="rounded-xl overflow-hidden">
+            {/* Map */}
+            <div className="rounded-2xl overflow-hidden border border-neutral-border">
               {contactInfo.googleMapsEmbedUrl ? (
                 <iframe
                   src={contactInfo.googleMapsEmbedUrl}
@@ -111,22 +129,14 @@ export default function Kontakt() {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               ) : (
-                <div className="flex min-h-[400px] items-center justify-center rounded-xl border-2 border-dashed border-neutral-300 bg-neutral-100 p-8 text-center">
+                <div className="flex min-h-[400px] items-center justify-center bg-neutral-bg p-8 text-center">
                   <div>
-                    <svg
-                      className="mx-auto mb-4 h-12 w-12 text-neutral-300"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      aria-hidden="true"
-                    >
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <p className="font-semibold text-neutral-body mb-1">Karta saknas</p>
-                    <p className="text-sm text-neutral-muted">
-                      Karta läggs till när Google Maps embed-URL är konfigurerad.
+                    <div className="w-12 h-12 rounded-full bg-brand-pink-tint flex items-center justify-center mx-auto mb-4 text-brand-pink">
+                      <Icon name="location" className="w-6 h-6" />
+                    </div>
+                    <p className="font-semibold text-neutral-body mb-1 text-sm">Karta saknas</p>
+                    <p className="text-xs text-neutral-muted">
+                      Läggs till när Google Maps embed-URL är konfigurerad.
                     </p>
                   </div>
                 </div>
@@ -136,27 +146,26 @@ export default function Kontakt() {
         </div>
       </section>
 
-      {/* Quick Contact CTA */}
-      <section className="bg-brand-pink text-white section-padding">
+      {/* Quick contact CTA */}
+      <section className="bg-brand-dark text-white section-pad-sm">
         <div className="container-max text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Snabb kontakt</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-            Snabbaste sättet att nå oss är via telefon eller e-post. Vi svarar normalt inom några
-            timmar på vardagar.
+          <h2 className="text-3xl font-black tracking-tight mb-4">Snabbaste sättet att nå oss</h2>
+          <p className="text-white/60 mb-8 max-w-md mx-auto text-sm leading-relaxed">
+            Via telefon eller e-post. Vi svarar normalt inom några timmar på vardagar.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={contactInfo.phoneHref}
-              className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 font-semibold text-brand-pink transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-pink px-6 py-3 font-semibold text-sm text-white hover:bg-brand-pink-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
-              <Icon name="phone" className="w-5 h-5" />
+              <Icon name="phone" className="w-4 h-4" />
               Ring oss
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="inline-flex items-center gap-2 rounded-md border-2 border-white bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 text-white/80 px-6 py-3 font-semibold text-sm hover:border-white/40 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
-              <Icon name="email" className="w-5 h-5" />
+              <Icon name="email" className="w-4 h-4" />
               Maila oss
             </a>
           </div>
