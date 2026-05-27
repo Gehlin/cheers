@@ -13,7 +13,7 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
 
 ### Hero Component
 
-- [ ] Create `src/components/HeroVideo.tsx` — a reusable full-screen hero that supports both a video background and a static image fallback:
+- [x] Create `src/components/HeroVideo.tsx` — a reusable full-screen hero that supports both a video background and a static image fallback:
   ```tsx
   interface HeroVideoProps {
     videoSrc?: string       // e.g. '/videos/drone-showcase.mp4'
@@ -35,7 +35,7 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
   - Accessibility: `<section aria-label="Hjältebanner">`, video element has `aria-hidden="true"` (decorative)
   - Placeholder asset note: if no `videoSrc` and no `imageSrc` are provided, show the existing gradient pattern as fallback (the `repeating-linear-gradient` from the original hero)
 
-- [ ] Update `src/pages/Home.tsx` — replace the current Hero section with `<HeroVideo>`:
+- [x] Update `src/pages/Home.tsx` — replace the current Hero section with `<HeroVideo>`:
   ```tsx
   <HeroVideo
     // videoSrc="/videos/drone-showcase.mp4"  ← uncomment when video is ready
@@ -49,7 +49,7 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
 
 ### Photo Showcase Section
 
-- [ ] Create `src/components/ShowcaseStrip.tsx` — a 3-image cinematic strip section that sits directly below the hero:
+- [x] Create `src/components/ShowcaseStrip.tsx` — a 3-image cinematic strip section that sits directly below the hero:
   ```tsx
   interface ShowcaseImage {
     src: string
@@ -67,7 +67,7 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
   - The entire strip has `bg-black` background so the images feel cinematic
   - No headline or a subtle one: optional `<h2>` above in white text if `headline` prop is passed
 
-- [ ] Add placeholder images data and the `<ShowcaseStrip>` to `src/pages/Home.tsx`, immediately after the `<HeroVideo>` and before the "Om No1 Ställningar" section:
+- [x] Add placeholder images data and the `<ShowcaseStrip>` to `src/pages/Home.tsx`, immediately after the `<HeroVideo>` and before the "Om No1 Ställningar" section:
   ```tsx
   const showcaseImages = [
     {
@@ -93,7 +93,7 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
 
 ### Video Asset Preparation
 
-- [ ] Create `public/videos/.gitkeep` — an empty placeholder so the `videos/` folder is tracked in git. Add a comment in `src/pages/Home.tsx` above the `<HeroVideo>` component:
+- [x] Create `public/videos/.gitkeep` — an empty placeholder so the `videos/` folder is tracked in git. Add a comment in `src/pages/Home.tsx` above the `<HeroVideo>` component:
   ```tsx
   {/*
     DRONE VIDEO: When the drone video is ready:
@@ -104,10 +104,12 @@ Replace the flat blue hero with a full-screen, video-ready hero that accepts a d
     4. Optionally add WebM format for better browser support
   */}
   ```
-- [ ] Create `public/images/.gitkeep` — placeholder folder for hero poster and showcase images.
+- [x] Create `public/images/.gitkeep` — placeholder folder for hero poster and showcase images.
 
 ### Update the Services Page Hero
 
-- [ ] Update the Services page hero banner in `src/pages/Tjanster.tsx` to use the same cinematic style — dark background (`bg-neutral-body`), full-width, with a subtle background pattern. Make the `<h1>` larger and more impactful: `text-4xl sm:text-5xl font-extrabold`.
+- [x] Update the Services page hero banner in `src/pages/Tjanster.tsx` to use the same cinematic style — dark background (`bg-neutral-body`), full-width, with a subtle background pattern. Make the `<h1>` larger and more impactful: `text-4xl sm:text-5xl font-extrabold`.
 
-- [ ] Run `npm run build` — zero errors. Run `npm run dev` and verify the hero renders with the gradient fallback, the showcase strip shows the 3 placeholder images side by side, and the scroll indicator chevron animates.
+- [x] Run `npm run build` — zero errors. Run `npm run dev` and verify the hero renders with the gradient fallback, the showcase strip shows the 3 placeholder images side by side, and the scroll indicator chevron animates.
+
+<!-- MAESTRO NOTE: All tasks completed 2026-05-27. Build verified clean (55 modules, 0 errors). -->

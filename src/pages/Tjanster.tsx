@@ -79,9 +79,15 @@ export default function Tjanster() {
       />
 
       {/* Page Hero */}
-      <section className="bg-brand-pink text-white min-h-[30vh] flex items-center section-padding">
-        <div className="container-max w-full">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Våra tjänster</h1>
+      <section
+        className="bg-neutral-body text-white min-h-[40vh] flex items-center section-padding relative overflow-hidden"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(135deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px)',
+        }}
+      >
+        <div className="container-max w-full relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">Våra tjänster</h1>
           <p className="text-lg text-white/80 max-w-xl">
             Professionella ställningslösningar för alla typer av projekt
           </p>

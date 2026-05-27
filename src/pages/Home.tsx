@@ -5,6 +5,8 @@ import SectionHeading from '@/components/SectionHeading'
 import ServiceCard from '@/components/ServiceCard'
 import TestimonialCard from '@/components/TestimonialCard'
 import Icon from '@/components/Icon'
+import HeroVideo from '@/components/HeroVideo'
+import ShowcaseStrip from '@/components/ShowcaseStrip'
 import { services } from '@/data/services'
 import { testimonials } from '@/data/testimonials'
 
@@ -27,6 +29,24 @@ const whyPoints = [
   },
 ]
 
+const showcaseImages = [
+  {
+    src: 'https://placehold.co/800x600/111827/ffffff?text=Projekt+foto+1',
+    alt: 'Byggnadsställningar under pågående renoveringsprojekt i Göteborg',
+    caption: 'Fasadrenovering, Göteborg',
+  },
+  {
+    src: 'https://placehold.co/800x600/111827/ffffff?text=Drone+video+här',
+    alt: 'Drönarbild över byggarbetsplats med ställningar',
+    caption: 'Nybyggnation, Västra Götaland',
+  },
+  {
+    src: 'https://placehold.co/800x600/111827/ffffff?text=Projekt+foto+3',
+    alt: 'Väderskydd och ställningar vid takrenovering',
+    caption: 'Väderskydd, Halland',
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -36,33 +56,25 @@ export default function Home() {
         path="/"
       />
 
-      {/* Hero */}
-      <section
-        className="relative bg-brand-blue text-white min-h-[80vh] flex items-center"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px)',
-        }}
-      >
-        <div className="section-padding container-max w-full">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Professionella ställningar i Göteborg
-            </h1>
-            <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-2xl leading-relaxed">
-              Vi levererar säkra och anpassade ställningslösningar för bygg, renovering och underhåll — i rätt tid och till rätt pris.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button as="a" href="/begar-offert" variant="primary" className="text-base px-7 py-3">
-                Begär offert
-              </Button>
-              <Button as="a" href="/tjanster" variant="outline" className="text-base px-7 py-3 border-white text-white hover:bg-white hover:text-brand-blue">
-                Se våra tjänster
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/*
+        DRONE VIDEO: When the drone video is ready:
+        1. Place the file at public/videos/drone-showcase.mp4
+           Recommended: 1920×1080, H.264, < 15 MB for web
+        2. Create a poster image: public/images/hero-poster.jpg (1920×1080)
+        3. Uncomment the videoSrc and posterSrc props on <HeroVideo>
+        4. Optionally add WebM format for better browser support
+      */}
+      <HeroVideo
+        // videoSrc="/videos/drone-showcase.mp4"  ← uncomment when video is ready
+        // posterSrc="/images/hero-poster.jpg"     ← uncomment when poster image is ready
+        headline="Professionella ställningar i Göteborg"
+        subheadline="No 1 Scaffolding Company AB — säkra och anpassade ställningslösningar för bygg, renovering och underhåll i Västra Götaland och Hallands län."
+        primaryCta={{ label: 'Begär offert', href: '/begar-offert' }}
+        secondaryCta={{ label: 'Se våra tjänster', href: '/tjanster' }}
+      />
+
+      {/* Replace placeholder images with real project photos or embed drone video before launch */}
+      <ShowcaseStrip images={showcaseImages} />
 
       {/* Short Intro */}
       <section className="bg-white section-padding">
