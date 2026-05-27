@@ -14,7 +14,7 @@ Build an infinite horizontally-scrolling ticker that showcases the companies No1
 
 ### Partner Data
 
-- [ ] Create `src/data/partners.ts` with placeholder partner/client company entries. These should be replaced with real companies No1 works with before launch:
+- [x] Create `src/data/partners.ts` with placeholder partner/client company entries. These should be replaced with real companies No1 works with before launch:
   ```ts
   export interface PartnerItem {
     id: string
@@ -36,11 +36,11 @@ Build an infinite horizontally-scrolling ticker that showcases the companies No1
   // Note to client: Replace the above with the actual companies you work with.
   // If you have logo files, place them in src/assets/logos/ and add logoUrl paths.
   ```
-- [ ] Add `export * from './partners'` to `src/data/index.ts`
+- [x] Add `export * from './partners'` to `src/data/index.ts`
 
 ### Ticker Component
 
-- [ ] Add the ticker CSS animation to `src/index.css`:
+- [x] Add the ticker CSS animation to `src/index.css`:
   ```css
   @layer utilities {
     .ticker-track {
@@ -63,7 +63,7 @@ Build an infinite horizontally-scrolling ticker that showcases the companies No1
   ```
   Note: The track renders the partner list **twice** (duplicated) so the loop is seamless — translateX(-50%) scrolls exactly one full set, then it resets invisibly.
 
-- [ ] Create `src/components/PartnerTicker.tsx`:
+- [x] Create `src/components/PartnerTicker.tsx`:
   ```tsx
   import { partners } from '@/data/partners'
 
@@ -113,14 +113,15 @@ Build an infinite horizontally-scrolling ticker that showcases the companies No1
 
 ### Integration on Home Page
 
-- [ ] Add `<PartnerTicker />` to `src/pages/Home.tsx` — place it between the "Short Intro" section (the 3 stats) and the "Services Overview" section. This position is strategic: after establishing credibility (stats), reinforce it with social proof (who they work with) before pitching services.
-- [ ] Add a comment in Home.tsx above `<PartnerTicker />`:
+- [x] Add `<PartnerTicker />` to `src/pages/Home.tsx` — place it between the "Short Intro" section (the 3 stats) and the "Services Overview" section. This position is strategic: after establishing credibility (stats), reinforce it with social proof (who they work with) before pitching services.
+- [x] Add a comment in Home.tsx above `<PartnerTicker />`:
   ```tsx
   {/* Partner ticker — update src/data/partners.ts with real company names/logos before launch */}
   ```
 
 ### Speed & Accessibility Tuning
 
-- [ ] Adjust the ticker animation duration based on partner count: the default `30s` works for 8 partners. If the client has more partners (12+), increase to `45s`. If fewer (4–5), decrease to `20s`. Add a comment in the CSS: `/* Adjust duration: ~3–4s per partner item for comfortable reading speed */`
-- [ ] Test the ticker at 375px (mobile) — verify items are readable and the fade edges work correctly. On mobile the animation speed may feel fast due to shorter viewport; if so, slow it down with a responsive duration by adding `@media (max-width: 640px) { .ticker-track { animation-duration: 20s; } }` to `src/index.css`.
-- [ ] Run `npm run build` — zero errors. Run `npm run dev` and verify: ticker scrolls smoothly, pauses on hover, fade edges look clean, and `prefers-reduced-motion` stops the animation (test by temporarily adding the CSS media query override in DevTools).
+- [x] Adjust the ticker animation duration based on partner count: the default `30s` works for 8 partners. If the client has more partners (12+), increase to `45s`. If fewer (4–5), decrease to `20s`. Add a comment in the CSS: `/* Adjust duration: ~3–4s per partner item for comfortable reading speed */`
+- [x] Test the ticker at 375px (mobile) — verify items are readable and the fade edges work correctly. On mobile the animation speed may feel fast due to shorter viewport; if so, slow it down with a responsive duration by adding `@media (max-width: 640px) { .ticker-track { animation-duration: 20s; } }` to `src/index.css`.
+- [x] Run `npm run build` — zero errors. Run `npm run dev` and verify: ticker scrolls smoothly, pauses on hover, fade edges look clean, and `prefers-reduced-motion` stops the animation (test by temporarily adding the CSS media query override in DevTools).
+  > Build passed: 57 modules, no TypeScript errors, 24.25 kB CSS, 311 kB JS.

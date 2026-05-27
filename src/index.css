@@ -12,6 +12,28 @@
 @layer utilities {
   .section-padding { @apply py-16 px-4 sm:px-6 lg:px-8; }
   .container-max  { @apply max-w-7xl mx-auto; }
+
+  /* Partner logo ticker — adjust duration: ~3–4s per partner item for comfortable reading speed */
+  /* Default 30s suits 8 partners. Increase to 45s for 12+ partners, decrease to 20s for 4–5 partners. */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
+  }
+  .ticker-track:hover,
+  .ticker-track:focus-within {
+    animation-play-state: paused;
+  }
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (max-width: 640px) {
+    .ticker-track { animation-duration: 20s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
 }
 
 /* Respect user preference for reduced motion */

@@ -7,6 +7,7 @@ import TestimonialCard from '@/components/TestimonialCard'
 import Icon from '@/components/Icon'
 import HeroVideo from '@/components/HeroVideo'
 import ShowcaseStrip from '@/components/ShowcaseStrip'
+import PartnerTicker from '@/components/PartnerTicker'
 import { services } from '@/data/services'
 import { testimonials } from '@/data/testimonials'
 
@@ -96,6 +97,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Partner ticker — update src/data/partners.ts with real company names/logos before launch */}
+      <PartnerTicker />
 
       {/* Services Overview */}
       <section className="bg-neutral-bg section-padding">

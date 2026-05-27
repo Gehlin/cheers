@@ -1,5 +1,6 @@
 export * from './contact'
 export * from './navigation'
+export * from './partners'
 export * from './services'
 export * from './testimonials'
 export * from './projects'
