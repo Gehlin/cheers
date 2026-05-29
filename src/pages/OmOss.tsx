@@ -4,6 +4,7 @@ import Accordion from '@/components/Accordion'
 import Icon from '@/components/Icon'
 import { faqItems } from '@/data/faq'
 import { contactInfo } from '@/data/contact'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const safetyPoints = [
   'CE-märkt utrustning enligt EU-standarder',
@@ -42,6 +43,10 @@ const stats = [
 ]
 
 export default function OmOss() {
+  const { ref: storyRef, isVisible: storyVisible } = useScrollReveal({ threshold: 0.1 })
+  const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.2 })
+  const { ref: safetyRef, isVisible: safetyVisible } = useScrollReveal({ threshold: 0.1 })
+
   return (
     <>
       <PageHelmet
@@ -70,8 +75,8 @@ export default function OmOss() {
 
       {/* Company story */}
       <section className="bg-white section-padding">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div ref={storyRef} className="container-max">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center reveal ${storyVisible ? 'is-visible' : ''}`}>
             <div>
               <SectionHeading eyebrow="Vår historia" title="Om oss" align="left" />
               <p className="text-neutral-muted leading-relaxed text-base">
@@ -80,7 +85,7 @@ export default function OmOss() {
                 monterar vi ställningar åt kunder i Västra Götaland och Hallands län.
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden bg-neutral-bg border border-neutral-border aspect-[4/3]">
+            <div className={`rounded-2xl overflow-hidden bg-neutral-bg border border-neutral-border aspect-[4/3] reveal reveal-delay-1 ${storyVisible ? 'is-visible' : ''}`}>
               <img
                 src="https://placehold.co/800x600/F7F7F8/141416?text=Projektbild"
                 alt="No1 Ställningar – Ställningar under pågående byggprojekt"
@@ -94,10 +99,13 @@ export default function OmOss() {
 
       {/* Stats */}
       <section className="bg-neutral-bg section-pad-sm">
-        <div className="container-max">
+        <div ref={statsRef} className="container-max">
           <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {stats.map(({ value, label }) => (
-              <div key={label} className="text-center p-8 bg-white rounded-2xl border border-neutral-border">
+            {stats.map(({ value, label }, i) => (
+              <div
+                key={label}
+                className={`text-center p-8 bg-white rounded-2xl border border-neutral-border reveal ${statsVisible ? 'is-visible' : ''} reveal-delay-${Math.min(i + 1, 4) as 1 | 2 | 3 | 4}`}
+              >
                 <p className="text-4xl font-black text-brand-pink mb-2">{value}</p>
                 <p className="text-xs font-medium text-neutral-muted uppercase tracking-wider">{label}</p>
               </div>
@@ -131,15 +139,20 @@ export default function OmOss() {
 
       {/* Safety — dark band */}
       <section className="bg-brand-dark text-white section-padding">
-        <div className="container-max max-w-3xl">
-          <SectionHeading eyebrow="Säkerhet" title="Säkerhet är vår prioritet" />
-          <p className="text-white/60 leading-relaxed text-center mb-10">
-            Varje ställning vi monterar inspekteras noggrant innan överlämning. Vi arbetar enligt
-            gällande arbetsmiljölagstiftning och EU-standarder.
-          </p>
+        <div ref={safetyRef} className="container-max max-w-3xl">
+          <div className={`reveal ${safetyVisible ? 'is-visible' : ''}`}>
+            <SectionHeading eyebrow="Säkerhet" title="Säkerhet är vår prioritet" />
+            <p className="text-white/60 leading-relaxed text-center mb-10">
+              Varje ställning vi monterar inspekteras noggrant innan överlämning. Vi arbetar enligt
+              gällande arbetsmiljölagstiftning och EU-standarder.
+            </p>
+          </div>
           <ul className="space-y-3.5 max-w-xl mx-auto">
-            {safetyPoints.map(point => (
-              <li key={point} className="flex items-start gap-3.5">
+            {safetyPoints.map((point, i) => (
+              <li
+                key={point}
+                className={`flex items-start gap-3.5 reveal ${safetyVisible ? 'is-visible' : ''} reveal-delay-${Math.min(i + 1, 4) as 1 | 2 | 3 | 4}`}
+              >
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-pink/20 flex items-center justify-center text-brand-pink">
                   <Icon name="check" className="w-3 h-3" />
                 </span>

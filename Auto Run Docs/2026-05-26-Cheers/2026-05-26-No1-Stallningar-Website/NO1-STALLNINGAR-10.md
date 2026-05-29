@@ -7,7 +7,7 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
 
 ### Scroll-Reveal Animations
 
-- [ ] Create `src/hooks/useScrollReveal.ts` — a custom hook using IntersectionObserver. The hook attaches a `ref` to a DOM element and returns whether it has entered the viewport:
+- [x] Create `src/hooks/useScrollReveal.ts` — a custom hook using IntersectionObserver. The hook attaches a `ref` to a DOM element and returns whether it has entered the viewport:
   ```ts
   import { useEffect, useRef, useState } from 'react'
 
@@ -46,7 +46,7 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
   }
   ```
 
-- [ ] Add global reveal animation classes to `src/index.css`:
+- [x] Add global reveal animation classes to `src/index.css`:
   ```css
   @layer utilities {
     .reveal {
@@ -64,25 +64,25 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
   }
   ```
 
-- [ ] Apply scroll reveal to `src/pages/Home.tsx` — wrap each major section's inner content container with the reveal pattern. Use `useScrollReveal` hook and apply `reveal` + `is-visible` classes conditionally. Apply to: Short Intro stats row, Services grid, Why Choose Us grid, Testimonials grid, and the Footer CTA heading. Use staggered `reveal-delay-1/2/3` on individual cards within grids for a cascade effect. Do NOT apply reveal to the Hero section (it's above the fold and should render immediately).
+- [x] Apply scroll reveal to `src/pages/Home.tsx` — wrap each major section's inner content container with the reveal pattern. Use `useScrollReveal` hook and apply `reveal` + `is-visible` classes conditionally. Apply to: Short Intro stats row, Services grid, Why Choose Us grid, Testimonials grid, and the Footer CTA heading. Use staggered `reveal-delay-1/2/3` on individual cards within grids for a cascade effect. Do NOT apply reveal to the Hero section (it's above the fold and should render immediately).
 
-- [ ] Apply scroll reveal to `src/pages/Tjanster.tsx` — Services grid cards and Process steps section.
+- [x] Apply scroll reveal to `src/pages/Tjanster.tsx` — Services grid cards and Process steps section.
 
-- [ ] Apply scroll reveal to `src/pages/OmOss.tsx` — Company Story section, Experience stat boxes, and the Safety Philosophy section.
+- [x] Apply scroll reveal to `src/pages/OmOss.tsx` — Company Story section, Experience stat boxes, and the Safety Philosophy section.
 
 ### Back-to-Top Button
 
-- [ ] Create `src/components/BackToTop.tsx`:
+- [x] Create `src/components/BackToTop.tsx`:
   - Tracks scroll position with a `useEffect` listener; shows button when `window.scrollY > 400`
   - `<button>` with `aria-label="Scrolla till toppen"`, fixed position `bottom-24 right-6 z-40` (above the floating call button's space, or adjust to not overlap)
   - Style: `w-10 h-10 rounded-full bg-brand-blue/80 hover:bg-brand-blue text-white shadow-lg` with an upward chevron SVG icon
   - Click handler: `window.scrollTo({ top: 0, behavior: 'smooth' })`
   - Fade in/out with `transition-opacity duration-300` and `opacity-0 pointer-events-none` when hidden
-- [ ] Add `<BackToTop />` to `src/App.tsx` alongside `<FloatingCallButton />` and `<CookieBanner />`
+- [x] Add `<BackToTop />` to `src/App.tsx` alongside `<FloatingCallButton />` and `<CookieBanner />`
 
 ### Error Boundary
 
-- [ ] Create `src/components/ErrorBoundary.tsx` — a React class component (Error Boundaries must be class components):
+- [x] Create `src/components/ErrorBoundary.tsx` — a React class component (Error Boundaries must be class components):
   ```tsx
   import { Component, type ErrorInfo, type ReactNode } from 'react'
 
@@ -126,7 +126,7 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
     }
   }
   ```
-- [ ] Wrap the app in `src/main.tsx` with `<ErrorBoundary>`:
+- [x] Wrap the app in `src/main.tsx` with `<ErrorBoundary>`:
   ```tsx
   import { ErrorBoundary } from './components/ErrorBoundary'
   // ...
@@ -143,7 +143,7 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
 
 ### Code Splitting (Lazy Routes)
 
-- [ ] Update `src/App.tsx` to lazy-load all page components using `React.lazy()` and wrap routes in `<Suspense>`:
+- [x] Update `src/App.tsx` to lazy-load all page components using `React.lazy()` and wrap routes in `<Suspense>`:
   ```tsx
   import { lazy, Suspense } from 'react'
 
@@ -165,6 +165,6 @@ Add scroll-reveal animations using Intersection Observer, a back-to-top button, 
     <Routes>...</Routes>
   </Suspense>
   ```
-- [ ] Run `npm run build` and compare chunk sizes to the previous build (was ~304 KB JS). Verify the main bundle is now significantly smaller and page-specific code is in separate chunks. If any chunk is still over 500 KB gzip, investigate and split further.
-- [ ] Run `npx tsc --noEmit` — verify zero TypeScript errors after all Phase 10 changes.
-- [ ] Run `npm run dev` and navigate between all pages — verify the spinner appears briefly on first visit to each page, animations trigger on scroll, back-to-top appears after scrolling down, and the floating call button is visible.
+- [x] Run `npm run build` and compare chunk sizes to the previous build (was ~304 KB JS). Verify the main bundle is now significantly smaller and page-specific code is in separate chunks. If any chunk is still over 500 KB gzip, investigate and split further.
+- [x] Run `npx tsc --noEmit` — verify zero TypeScript errors after all Phase 10 changes.
+- [x] Run `npm run dev` and navigate between all pages — verify the spinner appears briefly on first visit to each page, animations trigger on scroll, back-to-top appears after scrolling down, and the floating call button is visible.

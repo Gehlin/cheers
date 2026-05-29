@@ -6,6 +6,7 @@ import Icon from '@/components/Icon'
 import { services } from '@/data/services'
 import { faqItems } from '@/data/faq'
 import type { ServiceItem } from '@/types'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 function LargeServiceCard({ service }: { service: ServiceItem }) {
   return (
@@ -63,6 +64,9 @@ const steps = [
 ]
 
 export default function Tjanster() {
+  const { ref: servicesRef, isVisible: servicesVisible } = useScrollReveal({ threshold: 0.1 })
+  const { ref: processRef, isVisible: processVisible } = useScrollReveal({ threshold: 0.1 })
+
   return (
     <>
       <PageHelmet
@@ -91,11 +95,18 @@ export default function Tjanster() {
 
       {/* Services grid */}
       <section className="bg-neutral-bg section-padding">
-        <div className="container-max">
-          <SectionHeading eyebrow="Tjänster" title="Vad vi erbjuder" align="left" />
+        <div ref={servicesRef} className="container-max">
+          <div className={`reveal ${servicesVisible ? 'is-visible' : ''}`}>
+            <SectionHeading eyebrow="Tjänster" title="Vad vi erbjuder" align="left" />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {services.map(service => (
-              <LargeServiceCard key={service.id} service={service} />
+            {services.map((service, i) => (
+              <div
+                key={service.id}
+                className={`reveal ${servicesVisible ? 'is-visible' : ''} reveal-delay-${Math.min(i + 1, 4) as 1 | 2 | 3 | 4}`}
+              >
+                <LargeServiceCard service={service} />
+              </div>
             ))}
           </div>
         </div>
@@ -103,11 +114,16 @@ export default function Tjanster() {
 
       {/* Process */}
       <section className="bg-white section-padding">
-        <div className="container-max">
-          <SectionHeading eyebrow="Hur det fungerar" title="Så här fungerar det" />
+        <div ref={processRef} className="container-max">
+          <div className={`reveal ${processVisible ? 'is-visible' : ''}`}>
+            <SectionHeading eyebrow="Hur det fungerar" title="Så här fungerar det" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {steps.map(({ num, title, body }) => (
-              <div key={num} className="text-center">
+            {steps.map(({ num, title, body }, i) => (
+              <div
+                key={num}
+                className={`text-center reveal ${processVisible ? 'is-visible' : ''} reveal-delay-${Math.min(i + 1, 4) as 1 | 2 | 3 | 4}`}
+              >
                 <div className="w-12 h-12 rounded-xl bg-brand-pink-tint flex items-center justify-center mx-auto mb-5">
                   <span className="text-brand-pink font-black text-sm">{num}</span>
                 </div>
